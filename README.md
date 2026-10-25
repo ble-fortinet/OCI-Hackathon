@@ -18,7 +18,13 @@ OpenPath helps students uncover a wide range of career options, including specia
 
 OpenPath is one self-contained file. No account, server or install is needed.
 
-**Optional AI explanation (OCI Generative AI).** When deployed on Vercel with OCI credentials, the results page shows "Explain this match with AI", served by `api/advisor.js`. To turn it on, add these environment variables in the Vercel project (Settings → Environment Variables), then redeploy:
+**Optional AI explanation.** When deployed on Vercel with AI credentials, the results page shows "Explain this match with AI", served by `api/advisor.js`. It uses OpenAI when `OPENAI_API_KEY` is set, otherwise OCI Generative AI when all OCI values are set. Add the variables in the Vercel project (Settings → Environment Variables), then redeploy.
+
+OpenAI: set `OPENAI_API_KEY`, and `OPENAI_MODEL` if your project can't use the default `gpt-4o-mini` (for example `gpt-6.1-sol`).
+
+To test a key locally: copy `.env.example` to `.env.local`, fill it in, run `npm install`, then `node --use-system-ca tools/test-oci.js`.
+
+OCI Generative AI variables:
 
 | Variable | Value |
 |---|---|

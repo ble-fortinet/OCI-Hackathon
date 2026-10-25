@@ -682,7 +682,7 @@ function renderAbout(){
       <li><b>Licensing:</b> requirements vary by state and change. OpenPath lists credentials to look into, not rules. Confirm with your state licensing board or the credential's official site.</li>
       <li><b>Estimates:</b> a few newer occupations have no published survey data yet; their skills or education come from the most similar occupation and say so.</li>
       <li><b>Matching:</b> based on hand-tagged scenarios and simple word matching. It has not been validated as a career assessment.</li></ul></div>
-  <div class="panel"><h2>Privacy</h2><p>OpenPath runs entirely in your browser. Your quiz answers, note, saved careers and compare list are stored only on this device. Nothing is sent to any server unless you press “Explain this match with AI”. Then only that career's details and the quiz scenarios you answered yes or maybe to are sent to OpenPath's server and Oracle Cloud's AI service to write the explanation. Nothing that identifies you is sent. Links to outside sites open those sites in a new tab.</p></div>`;
+  <div class="panel"><h2>Privacy</h2><p>OpenPath runs entirely in your browser. Your quiz answers, note, saved careers and compare list are stored only on this device. Nothing is sent to any server unless you press “Explain this match with AI”. Then only that career's details and the quiz scenarios you answered yes or maybe to are sent to OpenPath's server and its AI provider (OpenAI or OCI Generative AI) to write the explanation. Nothing that identifies you is sent. Links to outside sites open those sites in a new tab.</p></div>`;
 }
 
 /* ---------- detail ---------- */
@@ -1076,7 +1076,7 @@ function aiSetup(c, r){
       const out = $("aiOut"); out.classList.remove("hidden"); out.textContent = "Asking the advisor…"; $("aiBtn").disabled = true;
       fetch("/api/advisor", {method: "POST", headers: {"Content-Type": "application/json"}, body: JSON.stringify({career: aiFacts(c), yes: r.yes.slice(0, 6), maybe: r.maybe.slice(0, 6)})})
         .then(res => res.json())
-        .then(j => { out.innerHTML = j.text ? `${esc(j.text).replace(/\n/g, "<br>")}<p class="small" style="margin:8px 0 0">Written by AI (OCI Generative AI on Oracle Cloud) using only OpenPath's sourced data for this career. Check the full profile and official sources before deciding.</p>` : `Couldn't reach the advisor right now. ${esc(j.error || "")}`; })
+        .then(j => { out.innerHTML = j.text ? `${esc(j.text).replace(/\n/g, "<br>")}<p class="small" style="margin:8px 0 0">Written by AI (${esc(j.provider || "AI service")}) using only OpenPath's sourced data for this career. Check the full profile and official sources before deciding.</p>` : `Couldn't reach the advisor right now. ${esc(j.error || "")}`; })
         .catch(() => { out.textContent = "Couldn't reach the advisor right now. Try again later."; })
         .finally(() => { $("aiBtn").disabled = false; });
     };
