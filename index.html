@@ -980,6 +980,7 @@ function renderMatch(){
         <div class="qsec"><h3>2. How do you like to work?</h3><p>These preferences help refine your paths. This question is optional.</p><div class="tiles" id="qmSty" role="group" aria-label="Work styles"></div></div>
         <div style="margin-top:24px"><button class="btn" id="qmGo">Start the questions →</button></div>
         <p class="small" id="qmHint" style="margin-top:10px" aria-live="polite">Not sure? Just press start.</p></div>
+      <p class="small" style="text-align:center;margin-top:14px">Just looking? <button class="linkbtn" id="qmDemo">See an example result</button> for Maya, a high school junior who likes fixing things.</p>
       ${SHOW_DETAILED_QUIZ ? `<p class="small" style="text-align:center;margin-top:14px">Prefer to choose everything yourself? <button class="linkbtn" id="toDetailed">Use the detailed quiz</button></p>` : ""}`;
     OP.interests.forEach(i => $("qmInt").appendChild(tileBtn(i.id, i.label, qm.interests.includes(i.id))));
     OP.styles.forEach(i => $("qmSty").appendChild(tileBtn(i.id, i.label, qm.styles.includes(i.id))));
@@ -992,6 +993,7 @@ function renderMatch(){
     });
     wire("qmInt", "interests"); wire("qmSty", "styles");
     $("qmGo").onclick = () => { qm.phase = "ask"; qmSave(); renderMatch(); };
+    $("qmDemo").onclick = qmRunDemo;
     $("toDetailed") && ($("toDetailed").onclick = () => showView("quiz"));
     return;
   }
@@ -1029,6 +1031,7 @@ function renderMatch(){
   const [best, ...rest] = sc, c = CAR[best.i];
   const why = r => (r.yes.length ? `You said yes to: ${r.yes.slice(0, 3).map(esc).join("; ")}` : `You said maybe to: ${r.maybe.slice(0, 3).map(esc).join("; ")}`);
   el.innerHTML = `<div class="hero" style="text-align:center"><h1 id="qmTitle">Your matches</h1><p style="margin:0 auto">Based on ${qm.order.length} answers. This is your best fit for these answers, a place to start exploring, not a guarantee.</p></div>
+    ${qm.demo ? `<div class="info noprint" style="margin:0 0 16px">This is an example. Maya, a high school junior, picked <b>Technology</b> and <b>Hands-on work</b>, then answered ${qm.order.length} questions: yes to the ones about fixing, building and troubleshooting${qm.order.some(id => qm.answers[id] < 0) ? ", not for me to the rest" : ""}. <button class="linkbtn" id="qmOwn">Start your own match →</button></div>` : ""}
     <div class="top-match"><span class="badge">Your top match</span>
       <h2>${esc(c.t)}</h2><p class="small" style="margin:0 0 8px"><b>${esc(FAM[c.f].name)}</b> · ${c.rs ? "Role-specific details" : "Shared guidance + official data"}</p>
       <p style="margin:0 0 8px">${esc(c.d)}</p><p class="small">${why(best)}</p>
@@ -1050,6 +1053,7 @@ function renderMatch(){
   $("qmPrint").onclick = () => openPlan(c.t);
   $("qmMore").onclick = () => { qm.phase = "ask"; qmForce = qm.order.length + 4; qmSave(); renderMatch(); };
   $("qmRe").onclick = qmRestart; $("qmLib").onclick = () => showView("library");
+  $("qmOwn") && ($("qmOwn").onclick = qmRestart);
   aiSetup(c, best);
 }
 
@@ -1085,6 +1089,16 @@ function aiSetup(c, r){
 let qmForce = 0;
 const _qmDone = qmDone;
 qmDone = function(){ if (qmForce && qm.order.length < qmForce) return false; qmForce = 0; return _qmDone(); };
+/* Example result: a sample student answers the real quiz, so judges and counselors can see a finished result in one click (?demo=maya). */
+function qmRunDemo(){
+  const YES = /robot|repair|fix|troubleshoot|machine|circuit|wiring|build|assembl|drone|engine|motor|install|prototype|equipment/i;
+  qm = {phase: "ask", interests: ["technology"], styles: ["hands"], answers: {}, order: [], demo: true};
+  for (let k = 0; k < 30 && !qmDone(); k++) {
+    const {next} = qmNext(); if (!next) break;
+    qm.answers[next] = YES.test(SC_LABEL[next]) ? 1 : -1; qm.order.push(next);
+  }
+  qm.phase = "result"; qmSave(); showView("match");
+}
 function qmRestart(){ qm = {phase: "start", interests: [], styles: [], answers: {}, order: []}; qmSave(); renderMatch(); window.scrollTo(0, 0); }
 
 /* ---------- views ---------- */
@@ -1109,7 +1123,9 @@ $("home").onclick = e => { e.preventDefault(); showView("match"); };
 $("footAbout").onclick = e => { e.preventDefault(); showView("about"); };
 
 if (!SHOW_DETAILED_QUIZ) document.querySelectorAll('nav.tabs button[data-view="quiz"], nav.tabs button[data-view="results"]').forEach(b => b.classList.add("hidden"));
-updateBadges(); updateCount(); showView("match");
+updateBadges(); updateCount();
+let demoParam = null; try { demoParam = new URLSearchParams(location.search).get("demo"); } catch(e) {}
+if (demoParam) qmRunDemo(); else showView("match");
 </script>
 </body>
 </html>

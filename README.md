@@ -6,6 +6,8 @@ OpenPath helps students uncover a wide range of career options, including specia
 
 **Live demo:** https://hackathonvanguard.vercel.app
 
+**Example result in one click:** https://hackathonvanguard.vercel.app/?demo=maya (a sample student's finished match and plan; add `?demo=maya` to any copy of the app)
+
 **Repository:** https://github.com/ble-fortinet/OCI-Hackathon
 
 ## Who it's for
