@@ -2,93 +2,128 @@
 
 ## Short description
 
-OpenPath helps students explore careers they may not know to search for yet. Students can describe what they enjoy in their own words or ask for guided choices. The app connects those signals to a broad set of career titles, then shows possible entry routes, majors and classes to investigate, work settings, skills, credentials, networking ideas, and longer-term specialist or leadership options. It also points students to current U.S. occupation, wage, and job-search resources so they can check the details before investing time or tuition.
+OpenPath helps students explore careers they may not know to search for yet. In about two minutes, a student picks a few interests, answers short "Would you enjoy this?" questions, and gets a top match plus five other strong matches. Each match comes with a step-by-step path: what to do now in high school, what to study, how to get a first role, how to grow, and how to lead or specialize, with pay at each stage. The app points students to current U.S. occupation, wage, credential and job-search sources so they can verify details before investing time or tuition.
 
 ## The problem
 
-Students often have to choose classes, training, or a college major before they understand the range of jobs connected to their interests. They may know a few familiar titles—such as teacher, doctor, software developer, or HR—but not the specialties and less-visible roles within those fields. A broad preference like “I like helping people” can connect to many different kinds of work, but a list of job titles alone does not explain what the work is like or how to try it safely.
+Students often have to choose classes, training or a college major before they understand the range of jobs connected to their interests. They may know a few familiar titles, such as teacher, doctor, software developer or HR, but not the specialties and less-visible roles within those fields. A broad preference like "I like helping people" can connect to many different kinds of work, but a list of job titles alone doesn't explain what the work is like or how to try it safely.
 
-The problem OpenPath is designed to address is the gap between having an interest and making an informed education or career decision. The app is intended to help students explore and verify options before making a costly commitment; it cannot guarantee a perfect career choice or prevent every wrong turn.
+OpenPath addresses the gap between having an interest and making an informed education or career decision. It helps students explore and verify options before making a costly commitment. It cannot guarantee a perfect career choice or prevent every wrong turn.
 
 ## Who has this problem
 
-The first audience is high-school and college students who are exploring majors, electives, internships, or early jobs. School counselors, career advisers, and families may also use the app as a conversation starter. The first release is U.S.-focused; job requirements, pay, licensing, and education routes differ by location.
+The first audience is high school and college students exploring majors, electives, internships or early jobs. School counselors, career advisers and families can use the app as a conversation starter. The first release is U.S.-focused; job requirements, pay, licensing and education routes differ by location.
 
 ## How OpenPath helps
 
-A student can select several interests, then drill into what kind of work within each one sounds appealing. For example, choosing technology opens options such as software, cybersecurity, data, or robotics; each choice then leads to realistic task scenarios. Six work preferences—including hands-on work, teamwork, structure, pace, fieldwork, and independent focus—have the same specific-choice and scenario steps. Students may select multiple answers at every stage, and can optionally add a written note. Guided answers use transparent role and title matches; notes use simpler phrase matching and may miss nuanced wording.
+**Quick match.** The student picks up to three interests from ten icon tiles (people and culture, analysis and problem-solving, creative work, community, operations, science, communication, leadership, environment and technology) and, optionally, up to two work styles (hands-on work, teamwork, clear structure, fast-changing work, outdoors or fieldwork, independent focus). The app then asks one realistic scenario at a time, such as "Troubleshooting a robot that stopped working" or "Restoring a damaged habitat," with three answers: Yes, Maybe or Not for me. Each question is chosen to best separate the careers still in the running, so most students finish in 6–12 taps. Back, Skip, "Change my picks" and "Show my match now" are always available.
 
-Each career profile offers a starting route from early experience to more advanced work, plus work-environment notes, ways to get first experience, relevant majors and classes to investigate, skills and credentials to check, networking ideas, and longer-term specialization or leadership options. A “before spending on a major or program” checklist asks students to verify prerequisites, cost, accreditation, transfer rules, licensing outcomes, and lower-cost ways to try the field.
+**Transparent results.** The student sees a top match, then five other strong matches. Every match says which "yes" answers connected it. Scoring is simple and documented: +3 for each "yes" scenario a career fits, +1 for "maybe", −3 for "not for me", plus small points for chosen interests and work styles. The top match is described as the best fit for the student's answers, a starting point to explore, not a prediction.
 
-Students can save paths and return to them in the same browser. They can also search an exact title in O*NET, review Bureau of Labor Statistics occupation information, or search current U.S. job postings by title and location through CareerOneStop.
+**A step-by-step path for every match.**
+1. **Now, in high school:** classes, student organizations and low-cost ways to try the field.
+2. **What to study:** the most common education level, majors and programs, useful courses, and a reminder to check cost, accreditation and credit transfer before paying for a program.
+3. **First 0–2 years:** the first role, credentials to look into, and starting pay.
+4. **Years 2–7:** skills to build, networking ideas, mid-career credentials and typical pay.
+5. **Years 8+:** leadership, specialization or pivot options, advanced credentials and senior pay.
+
+**Full career pages** add the work environment, related titles, skills and tools, education reported by workers, majors linked through the official crosswalk, credentials to verify, networking, pay percentiles and pay by state, and links to current sources and job searches. Students can save careers, compare up to three side by side, and print or download a clean one-page plan.
+
+A more detailed multi-step quiz is built in but hidden in this version to keep the experience simple.
 
 ## What is in the current demo
 
-The local demo contains 228 unique career-title cards across 20 browse categories, including people and culture, community, creative work, technology, healthcare, science and space, education, law and public safety, hospitality and tourism, trades and construction, agriculture and animal care, transportation and aviation, sales, operations, and environmental work. Creative roles span visual art, film and television, animation, design, games, music, writing, digital content, photography, and exhibitions. Examples include cybersecurity analyst, robotics technician, robotics engineer, registered nurse, cardiologist, radiologist, genetic counselor, astronomer, planetary scientist, astronaut, sales engineer, talent acquisition specialist, people analytics analyst, and supply-chain analyst.
+- **319 career titles across 19 families**, including people, HR and workplace culture; community and public service; visual art and design; film, TV and animation; games and digital content; music and audio; writing and communication; technology, data, AI and cybersecurity; robotics, automation and manufacturing; engineering and skilled trades; healthcare, physicians and medical specialties; science, research and space; education; law and public safety; hospitality, events and tourism; agriculture and animal care; transportation and aviation; sales, business and operations; and environment, climate, conservation and energy.
+- **97 careers with role-specific research** (for example Employee Engagement Specialist, Child Life Specialist, Perfusionist, Foley Artist, Wind Turbine Technician and Astronaut): a typical day, environment, credentials, networking, a five-stage path, specialize/lead/pivot options and a researched pay range linked to its source.
+- **222 careers that use shared career-family guidance plus official occupation data.** Their pages say so clearly; they are not individually researched reports about that exact title.
+- **256 official occupations linked** for tasks, related titles, skills, tools, education levels, majors and pay.
 
-The 18 original profiles have more role-specific descriptions and details. The additional titles broaden discovery, but many use shared career-family summaries and pathways. They are not individually researched occupational reports. Students are directed to the linked official occupation profiles for the exact tasks, requirements, and alternate titles. The library is a useful starting set, not every title used by every employer or a complete worldwide job catalog.
+The library is a useful starting set, not every title used by every employer or a complete job catalog.
 
 ## How it was built
 
-The demo is a responsive, single-page application built with HTML, CSS, and JavaScript. It runs in a browser without a server or account. The career list, interest choices, role-detail views, search, filters, saved paths, education guidance, and result ordering are implemented in the page. Saved roles use the browser’s local storage.
+OpenPath is a responsive, single-page application built with HTML, CSS and JavaScript. It runs in a browser with no server or account. Saved careers, quiz answers and the compare list use the browser's local storage.
 
-The current matching is transparent keyword and category matching. It is not a predictive model, a clinical or psychological assessment, or a validated measure of who will thrive in a job. The student’s free-text note stays in the browser. When a student opens an external search, the career title and optional location are sent to the linked occupation or job-search site.
+The content is maintained in the repository's `tools` folder: `catalog.py` holds the quiz questions, career families and career cards (each card is tagged with the scenarios it fits); `validate.py` checks that every occupation code exists, every tag is a real quiz scenario and every scenario leads to at least two careers; and `build.py` combines the catalog with processed official data in the `data` folder to produce `index.html`. Adding a career is one line in the catalog followed by a rebuild.
+
+Matching is transparent rule-based scoring on hand-tagged scenarios. It is not a predictive model, a psychological assessment or a validated measure of who will thrive in a job. Role-specific profiles were researched with AI assistance and their pay figures were checked against Bureau of Labor Statistics pages.
 
 ## Market data and source links
 
-The app links to O*NET’s current U.S. occupation catalog, which lists 1,016 occupation records in its current release and includes titles, tasks, skills, interests, education, and related information. It links to the Bureau of Labor Statistics’ Occupational Outlook Handbook and wage resources for education, duties, pay, and outlook. Current job postings are opened through CareerOneStop using the selected title and location.
+- **Occupation data:** O*NET Database (U.S. Department of Labor, CC BY 4.0). Tasks, related titles and tools come from O*NET 30; skills, education levels, interests and job zones from earlier O*NET releases. Where a newer occupation has no published survey data yet, the app uses the most similar occupation and labels it as an estimate.
+- **Pay:** Bureau of Labor Statistics Occupational Employment and Wage Statistics: national 10th, 25th, median, 75th and 90th percentile pay (May 2025 where published, otherwise May 2024) and state medians (May 2024). Each pay section shows its date and states that it describes the broad occupation, not a guaranteed salary for a specialty title.
+- **Majors:** National Center for Education Statistics CIP 2020 to SOC 2018 crosswalk.
+- **Links out:** each career page links to O*NET OnLine, BLS wage data and the Occupational Outlook Handbook, CareerOneStop (certifications, state licenses and local training), Apprenticeship.gov and job searches on Indeed, LinkedIn and USAJOBS.
 
-A small subset of the demo profiles displays a sourced national median-pay benchmark for a related occupation. The rest direct students to external wage information because specialty titles do not always have a separate national estimate. The demo does not contain a live wage feed or display current job postings inside the app. National median pay is not a promise of an individual salary; local wages, employer, industry, experience, credentials, and job title matter.
+The app does not contain a live wage feed or show live job postings. National pay is not a promise of an individual salary; location, employer, industry, experience, credentials and title all matter.
 
 ## Similar tools and the opportunity
 
-There are already useful career-exploration services. My Next Move offers interest-based discovery and profiles for more than 900 careers. BigFuture connects career quizzes, career profiles, and majors. CareerOneStop provides occupation profiles, wage and outlook information, local job searches, and training resources.
+There are already useful career-exploration services. My Next Move offers interest-based discovery and profiles for more than 900 careers. BigFuture connects career quizzes, career profiles and majors. CareerOneStop provides occupation profiles, wage and outlook information, job searches and training resources. School platforms such as Naviance and Xello require a school or district license, and newer AI career coaches accept plain language but don't always show where their facts come from.
 
-OpenPath should be presented as a complementary student-facing guide, not as the first career quiz or the largest career database. Its proposed contribution is to put self-description, less-familiar titles, a readable path, and a practical “check this before paying” sequence into one flow, while handing students off to established sources for current facts. Whether that joined-up experience is easier or more useful for students is a question for testing, not a proven result.
+OpenPath is a complementary, student-facing guide, not the first career quiz or the largest career database. Its contribution is to combine a short adaptive quiz, less-familiar job titles, one clear top match with alternatives, a readable step-by-step path for each, and a "check this before paying" habit, while handing students off to established sources for current facts. Whether that experience is easier or more useful for students is a question for testing, not a proven result.
 
 ## Testing completed
 
-A local functional smoke check exercised the app’s JavaScript and browser-page structure. It confirmed that all 228 unique career details can open, story-based and guided choices return roles, exact-title search can find Astronaut while interest filters are active, the astronaut profile shows its NASA-specific requirements link, and the current-job search link includes the entered location. The page’s script parses, the HTML structure balances, role controls have unique IDs, and the data placeholder count is zero.
+Automated tests in a headless Chromium browser (October 25, 2026):
 
-These checks confirm that core interactions work. They do not measure recommendation accuracy, user satisfaction, employment outcomes, or whether a student made a better education decision. No student study or professional review has been completed yet.
+- **Quick match with simulated students** who answered "yes" only to scenarios fitting one interest:
+  - Robotics: 11 questions → Controls Engineer, then Mechatronics Engineer, Drone Pilot, Robotics Engineer and Astronaut.
+  - Animals: 8 questions → Zoologist, then Animal Enrichment Specialist, Animal Trainer and Veterinary Technician.
+  - People and leadership: 11 questions → Executive Coach, then Organizational Development Consultant and Academic Advisor.
+- Back, Skip, Change my picks, the five-step path for the top match and other matches, opening a full profile and returning to results.
+- Print my plan opens a clean plan view; Print calls the browser's print, and Download produces a standalone plan page.
+- Career library search and family filters, save, compare, About page, state pay picker, and the Astronaut profile's NASA source link.
+- Phone width (390 px) with no horizontal scrolling; no JavaScript errors on any screen.
+- The catalog validator reports no problems, and rebuilding from the repository reproduces the published `index.html` exactly.
 
-## Accuracy, privacy, and limits
+These checks confirm that core interactions work. They do not measure recommendation quality, user satisfaction, employment outcomes or whether a student made a better education decision. No student study, screen-reader test or professional content review has been completed yet.
 
-OpenPath does not know where a student will thrive. It can only surface roles that share selected interest or work-style signals and explain those signals. The current rules can miss relevant careers, return too many broad matches, or misunderstand nuanced writing. The work-style labels describe broad environments, not every employer or team.
+## Accuracy, privacy and limits
 
-The featured library and family-level descriptions need review by students, school counselors, workers in each field, and subject-matter experts. Education and licensing rules should be checked against current program and jurisdiction requirements. Salary and job-outlook facts should be refreshed from their original sources, and live openings should always be treated as time-sensitive.
+OpenPath does not know where a student will thrive. It surfaces careers that share the student's answers and explains why. The rules can miss relevant careers or rank a loosely related one too high, and the scenario tags reflect editorial judgment.
 
-The app does not send the student’s free-text note to the linked sites. The title and location are included only when the student chooses to open an external search. Saved paths remain in the same browser unless the student clears that browser data.
+Role-specific and family-level content needs review by students, school counselors, workers in each field and subject-matter experts. Credentials are listed as things to look into, not legal requirements; licensing rules vary by state and change. Pay and outlook should be refreshed from the original sources.
+
+Everything a student does stays in their browser. When a student opens an outside link, only the career title is included in that link.
 
 ## How we would test the next version
 
-1. Ask students to describe an interest or use guided choices, then record whether they can explain why the suggested roles appeared.
-2. Have students and career advisers rate the top five suggestions for relevance, variety, and discoverability; do not call those ratings “prediction accuracy.”
-3. Check a sample of profiles in each career family with practitioners and advisers for accurate duties, entry routes, majors, licenses, credentials, pay sources, and leadership paths.
-4. Test whether students can find an exact title, understand its education route, find local postings, save a path, and identify a low-cost way to explore before choosing a major.
-5. Track the share of students who find at least one previously unknown role they want to investigate, while also checking for misleading matches and inaccessible paths.
-6. Repeat the content check when O*NET, BLS, licensing boards, or education programs update their requirements.
+1. Ask students to complete Quick match, then record whether they can explain why their top match appeared.
+2. Have students and career advisers rate the top match and five alternatives for relevance, variety and discoverability; do not call those ratings "prediction accuracy."
+3. Check a sample of profiles in each career family with practitioners and advisers for accurate duties, entry routes, majors, licenses, credentials, pay sources and leadership paths.
+4. Test whether students can follow a step-by-step path, identify a low-cost way to explore, and find what to verify before paying for a program.
+5. Track the share of students who find at least one previously unknown role they want to investigate, while checking for misleading matches.
+6. Repeat the content check whenever O*NET, BLS, licensing boards or education programs update their requirements.
 
 ## Next steps
 
-- Publish a shareable demo and replace the local preview address with its public URL.
-- Build a source-mapped role catalog from current occupation data, with visible source, date, alternate titles, and a clear distinction between verified facts and student-facing summaries.
-- Add a preference and constraints profile for location, education budget, time to train, accessibility needs, preferred work setting, and willingness to relocate.
-- Add side-by-side pathway comparison, including time, tuition, prerequisites, licenses, paid entry routes, and transfer options, using current sources.
-- Test recommendations with students and advisers before making stronger claims about fit or outcomes.
-- If an AI assistant is added later, use it to explain sourced role information and suggest questions to ask—not to make a career decision for a student. Keep citations and allow students to inspect and correct the assumptions.
+- Turn on GitHub Pages and share the public demo URL.
+- Refresh all occupation data to the current O*NET release (31.0) and the newest BLS estimates.
+- Add a location and constraints step (state, budget, time to train, accessibility needs) so pay and training options reflect where the student lives.
+- Have counselors and practitioners review the role-specific profiles and family guidance.
+- Test Quick match with students and advisers before making stronger claims about fit or outcomes.
+- If an AI assistant is added later, use it to explain sourced role information and suggest questions to ask, not to make a career decision for a student. Keep citations and let students inspect the assumptions.
 
 ## Demo URL
 
-Public demo URL: **not published yet**. The working demo is the local `index.html` file in the Career Discovery folder and is only accessible on this computer. Add the public GitHub Pages or other hosting URL here before submitting the application.
+- **Live demo:** https://rtrtssn4cn-hue.github.io/OCI-hackathon/ (available once GitHub Pages is turned on: Settings → Pages → Deploy from a branch → `main`, `/ (root)`)
+- **Repository:** https://github.com/rtrtssn4cn-hue/OCI-hackathon
+- The app also runs offline: download `index.html` and open it in any browser.
 
 ## Sources
 
-- O*NET 31.0 occupation database and current release information: https://www.onetcenter.org/database.html and https://www.onetcenter.org/whatsnew.html
-- O*NET occupation keyword search: https://www.onetonline.org/find/quick
-- Bureau of Labor Statistics Occupation Finder: https://www.bls.gov/ooh/occupation-finder.htm
-- CareerOneStop occupation, wage, interest, and job-search tools: https://www.careeronestop.org/Toolkit/Careers/careers.aspx
+- O*NET Database and release information: https://www.onetcenter.org/database.html and https://www.onetcenter.org/whatsnew.html
+- O*NET database license: https://www.onetcenter.org/license_db.html
+- O*NET OnLine: https://www.onetonline.org/
+- BLS Occupational Employment and Wage Statistics: https://www.bls.gov/oes/
+- BLS Occupational Outlook Handbook: https://www.bls.gov/ooh/
+- NCES CIP to SOC crosswalk: https://nces.ed.gov/ipeds/cipcode/resources.aspx?y=56
+- CareerOneStop: https://www.careeronestop.org/
 - My Next Move overview: https://www.mynextmove.org/help/about/
 - BigFuture careers and majors: https://bigfuture.collegeboard.org/community/careers-majors
 - NASA astronaut requirements: https://www.nasa.gov/humans-in-space/astronauts/become-an-astronaut/
-- O*NET 31.0 database licensing: https://www.onetcenter.org/license_db.html
+
+---
+
+© 2026 [Your Name]. All rights reserved.
