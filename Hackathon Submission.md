@@ -14,6 +14,38 @@ OpenPath addresses the gap between having an interest and making an informed edu
 
 The first audience is high school and college students exploring majors, electives, internships or early jobs. School counselors, career advisers and families can use the app as a conversation starter. The first release is U.S.-focused; job requirements, pay, licensing and education routes differ by location.
 
+## The smallest wedge: one counselor, one class period
+
+Before building a platform, OpenPath has to work in one setting: a high school counselor running a career lesson with juniors.
+
+- **Before:** a counselor responsible for hundreds of students (the U.S. average was 376 students per counselor in 2023–24) gets a few minutes per student. The meeting often starts from "What do you want to do?", and many students can only name a handful of familiar jobs.
+- **During the lesson:** each student completes Quick match in about two minutes on any phone or laptop and prints or downloads a one-page plan.
+- **After:** the student arrives at their counseling meeting with a top match, five alternatives they may not have heard of, a step-by-step path, and a list of things to verify before paying for a program. The meeting starts from options instead of a blank page.
+
+This wedge needs no accounts, no server and no student data, so a counselor can use it the same day without a district purchase or a privacy review. The same flow works for a college first-year seminar or an advising appointment.
+
+## Who uses it, who pays, and why they're reachable
+
+- **User:** high school juniors and seniors, and college first- and second-year students who haven't settled on a major.
+- **Champion:** school counselors and college career advisers. They already run career lessons and appointments and need something students can finish in one sitting. They're reachable as a community through professional associations such as the American School Counselor Association and NACE.
+- **Buyer, later:** school districts and college career-services or advising offices. The tools they buy today, such as Naviance and Xello, are sold as school or district licenses. OpenPath starts free for individual counselors and students, and a paid tier comes only after counselors are using it.
+
+## Market scope
+
+- **15.6 million** students attended U.S. public high schools (grades 9–12) in fall 2023 (NCES), roughly 3.9 million per grade.
+- **15.8 million** undergraduates were enrolled at U.S. degree-granting institutions in fall 2023 (NCES).
+- **33%** of students pursuing a bachelor's degree changed their major at least once within three years (NCES, students who started in 2011–12).
+- **$11,610** was the average yearly in-state tuition and fees at a public four-year college in 2024–25 (College Board). If a late switch adds even one semester, that is roughly $5,800 in tuition alone, before living costs.
+
+OpenPath has no usage data yet. The first metric to collect is the share of students in a pilot class who find at least one career they hadn't heard of and want to look into.
+
+## How it grows after the wedge
+
+1. **One class, then a school:** counselors share the link, and every student who finishes walks away with a printable plan. Distribution follows the counselor, not a sales cycle.
+2. **Counselor view:** an optional class summary, such as which career families a class is interested in, helps a counselor plan workshops and speakers. This is the first feature a school or district would pay for.
+3. **College career centers:** the same flow fits first-year seminars and advising appointments, reaching the 15.8 million undergraduates.
+4. **Deeper data and AI on OCI:** expand from 319 careers to all 1,016 O*NET occupations, and add an OCI Generative AI advisor that explains sourced career information in plain language and cites its sources.
+
 ## How OpenPath helps
 
 **Quick match.** The student picks any of ten interest tiles (fewer gives a sharper match) (people and culture, analysis and problem-solving, creative work, community, operations, science, communication, leadership, environment and technology) and, optionally, any work styles (hands-on work, teamwork, clear structure, fast-changing work, outdoors or fieldwork, independent focus). The app then asks one realistic scenario at a time, such as "Troubleshooting a robot that stopped working" or "Restoring a damaged habitat," with three answers: Yes, Maybe or Not for me. Each question is chosen to best separate the careers still in the running, so most students finish in 6–12 taps. Back, Skip, "Change my picks" and "Show my match now" are always available.
@@ -124,6 +156,11 @@ Everything a student does stays in their browser. When a student opens an outsid
 - CareerOneStop: https://www.careeronestop.org/
 - My Next Move overview: https://www.mynextmove.org/help/about/
 - BigFuture careers and majors: https://bigfuture.collegeboard.org/community/careers-majors
+- NCES public school enrollment, fall 2023: https://nces.ed.gov/learn/press-release/nces-data-show-public-school-enrollment-held-steady-overall-fall-2022-fall-2023
+- NCES undergraduate enrollment (Condition of Education): https://nces.ed.gov/programs/coe/indicator/cha
+- NCES Data Point, beginning college students who change their majors within 3 years: https://nces.ed.gov/pubs2018/2018434/
+- ASCA student-to-school-counselor ratio 2023–24: https://schoolcounselor.org/getmedia/1282baef-9128-44cf-8b4b-63fa5cfda2b6/pr_ratios-23-24.pdf
+- College Board, Trends in College Pricing and Student Aid 2024: https://research.collegeboard.org/media/pdf/Trends-in-College-Pricing-and-Student-Aid-2024-ADA.pdf
 - NASA astronaut requirements: https://www.nasa.gov/humans-in-space/astronauts/become-an-astronaut/
 
 ---
