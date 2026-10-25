@@ -2,6 +2,7 @@
 
 ## At a glance
 
+- **See the full workflow in one click:** https://hackathonvanguard.vercel.app/?demo opens a completed result for a sample student: a top match with "why it matched", a five-step path with pay at each stage, five alternatives, an AI explanation, a full career profile and a printable plan. Or press **See an example result** on the home screen.
 - **Smallest wedge:** one high school counselor, one class period. Juniors finish Quick match in about two minutes and each prints a one-page plan for their counseling meeting. It needs no accounts, server, student data or district purchase, so a counselor can use it the same day.
 - **Market size:** about 3.9 million students in each U.S. public high school grade (15.6 million in grades 9–12, fall 2023, NCES), each served by a counselor with an average caseload of 376 students (ASCA, 2023–24). Another 15.8 million undergraduates are choosing or changing majors (NCES, fall 2023).
 - **Impact metric:** 33% of bachelor's students change their major within three years (NCES). At $11,610 a year for in-state public tuition and fees (College Board, 2024–25), one extra semester costs a student about $5,800 in tuition alone. OpenPath's job is to move that exploration before enrollment, when it's free.
@@ -171,6 +172,13 @@ Everything a student does stays in their browser unless they press "Explain this
 ## Demo URL
 
 - **Live demo:** https://hackathonvanguard.vercel.app
+- **Example walkthrough (no quiz needed):** https://hackathonvanguard.vercel.app/?demo
+  1. The example shows a student who picked Creative work, Communication and Technology and answered 8 questions. Their top match is **UX Writer**, with the yes answers that led to it.
+  2. Press **Explain this match with AI** for a short explanation built only from sourced data, with every number checked.
+  3. Read **Your path, step by step**: high school, what to study, first role and starting pay, mid career, and lead or specialize.
+  4. Open **See full profile** for the typical day, skills, majors, credentials, pay percentiles and pay by state, and links to official sources.
+  5. Press **Print my plan** for the one-page plan a student brings to their counselor. The AI explanation is included.
+  6. Open **Other strong matches** (Conversation Designer, UX/UI Designer and others) and use **+ Compare** to see them side by side.
 - **Repository:** https://github.com/ble-fortinet/OCI-Hackathon
 - The app also runs offline: download `index.html` and open it in any browser.
 

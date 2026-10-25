@@ -978,8 +978,10 @@ function renderMatch(){
       <div class="qcard">
         <div class="qsec"><h3>1. What sounds like you?</h3><p>Pick as many as you like. Choosing fewer gives a sharper match.</p><div class="tiles" id="qmInt" role="group" aria-label="Interests"></div></div>
         <div class="qsec"><h3>2. How do you like to work?</h3><p>These preferences help refine your paths. This question is optional.</p><div class="tiles" id="qmSty" role="group" aria-label="Work styles"></div></div>
-        <div style="margin-top:24px"><button class="btn" id="qmGo">Start the questions →</button></div>
+        <div class="row" style="margin-top:24px;justify-content:center"><button class="btn" id="qmGo">Start the questions →</button><button class="btn ghost" id="qmDemo">See an example result</button></div>
         <p class="small" id="qmHint" style="margin-top:10px" aria-live="polite">Not sure? Just press start.</p></div>
+      <div class="panel" style="margin-top:18px"><h2 style="font-size:17px">For counselors: one class period</h2>
+        <p class="small" style="margin:0">Each student finishes Quick match in about two minutes and prints a one-page plan to bring to their counseling meeting. No accounts, no sign-up and no student data. Why it matters: a third of bachelor's students change their major within three years (NCES), and one extra semester costs about $5,800 in in-state public tuition (College Board, 2024–25). Exploring before enrolling is free.</p></div>
       ${SHOW_DETAILED_QUIZ ? `<p class="small" style="text-align:center;margin-top:14px">Prefer to choose everything yourself? <button class="linkbtn" id="toDetailed">Use the detailed quiz</button></p>` : ""}`;
     OP.interests.forEach(i => $("qmInt").appendChild(tileBtn(i.id, i.label, qm.interests.includes(i.id))));
     OP.styles.forEach(i => $("qmSty").appendChild(tileBtn(i.id, i.label, qm.styles.includes(i.id))));
@@ -992,6 +994,7 @@ function renderMatch(){
     });
     wire("qmInt", "interests"); wire("qmSty", "styles");
     $("qmGo").onclick = () => { qm.phase = "ask"; qmSave(); renderMatch(); };
+    $("qmDemo").onclick = startDemo;
     $("toDetailed") && ($("toDetailed").onclick = () => showView("quiz"));
     return;
   }
@@ -1028,7 +1031,7 @@ function renderMatch(){
   }
   const [best, ...rest] = sc, c = CAR[best.i];
   const why = r => (r.yes.length ? `You said yes to: ${r.yes.slice(0, 3).map(esc).join("; ")}` : `You said maybe to: ${r.maybe.slice(0, 3).map(esc).join("; ")}`);
-  el.innerHTML = `<div class="hero" style="text-align:center"><h1 id="qmTitle">Your matches</h1><p style="margin:0 auto">Based on ${qm.order.length} answers. This is your best fit for these answers, a place to start exploring, not a guarantee.</p></div>
+  el.innerHTML = `${qm.demo ? `<div class="info noprint" style="margin-top:18px"><b>Example result.</b> A student picked Creative work, Communication and Technology, chose Independent focus, and answered 8 questions: yes to explaining complicated information, finding where app users get stuck and building a product with a team; maybe to AI and data patterns; not for me to cyberattacks, hiring interviews and news interviews. Everything below is live: open a full profile, compare, print the plan${aiEnabled ? " or ask the AI to explain the match" : ""}. <button class="linkbtn" id="qmOwn">Start my own match</button></div>` : ""}<div class="hero" style="text-align:center"><h1 id="qmTitle">Your matches</h1><p style="margin:0 auto">Based on ${qm.order.length} answers. This is your best fit for these answers, a place to start exploring, not a guarantee.</p></div>
     <div class="top-match"><span class="badge">Your top match</span>
       <h2>${esc(c.t)}</h2><p class="small" style="margin:0 0 8px"><b>${esc(FAM[c.f].name)}</b> · ${c.rs ? "Role-specific details" : "Shared guidance + official data"}</p>
       <p style="margin:0 0 8px">${esc(c.d)}</p><p class="small">${why(best)}</p>
@@ -1048,8 +1051,9 @@ function renderMatch(){
   el.querySelectorAll("[data-plan-print]").forEach(b => b.onclick = () => openPlan(b.dataset.planPrint));
   el.querySelectorAll("[data-cmp]").forEach(b => b.onclick = () => { toggleCmp(b.dataset.cmp); b.textContent = cmp.includes(b.dataset.cmp) ? "✓ Comparing" : "+ Compare"; });
   $("qmPrint").onclick = () => openPlan(c.t);
-  $("qmMore").onclick = () => { qm.phase = "ask"; qmForce = qm.order.length + 4; qmSave(); renderMatch(); };
+  $("qmMore").onclick = () => { qm.phase = "ask"; delete qm.demo; qmForce = qm.order.length + 4; qmSave(); renderMatch(); };
   $("qmRe").onclick = qmRestart; $("qmLib").onclick = () => showView("library");
+  $("qmOwn") && ($("qmOwn").onclick = qmRestart);
   aiSetup(c, best);
 }
 
@@ -1086,6 +1090,13 @@ let qmForce = 0;
 const _qmDone = qmDone;
 qmDone = function(){ if (qmForce && qm.order.length < qmForce) return false; qmForce = 0; return _qmDone(); };
 function qmRestart(){ qm = {phase: "start", interests: [], styles: [], answers: {}, order: []}; qmSave(); renderMatch(); window.scrollTo(0, 0); }
+// A sample student's answers, scored by the same engine as a real run (open with ?demo or the "See an example result" button).
+const DEMO_ANSWERS = {wr_explain: 1, cust_ux: 1, team_product: 1, ai_model: 0.5, data_pattern: 0.5, sec_stop: -1, hire_interview: -1, media_interview: -1};
+function startDemo(){
+  qm = {phase: "result", demo: true, interests: ["creative", "communication", "technology"], styles: ["independent"], answers: {...DEMO_ANSWERS}, order: Object.keys(DEMO_ANSWERS)};
+  showView("match"); window.scrollTo(0, 0);
+  aiCheck().then(() => { if (currentView === "match" && qm.demo) renderMatch(); });
+}
 
 /* ---------- views ---------- */
 const VIEWS = ["match", "quiz", "results", "library", "saved", "compare", "about", "detail"];
@@ -1109,7 +1120,8 @@ $("home").onclick = e => { e.preventDefault(); showView("match"); };
 $("footAbout").onclick = e => { e.preventDefault(); showView("about"); };
 
 if (!SHOW_DETAILED_QUIZ) document.querySelectorAll('nav.tabs button[data-view="quiz"], nav.tabs button[data-view="results"]').forEach(b => b.classList.add("hidden"));
-updateBadges(); updateCount(); showView("match");
+updateBadges(); updateCount();
+if (/[?&#]demo\b/.test(location.search + location.hash)) startDemo(); else showView("match");
 </script>
 </body>
 </html>
