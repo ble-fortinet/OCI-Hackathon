@@ -1,8 +1,17 @@
 # OpenPath — career choices beyond familiar job titles
 
+## At a glance
+
+- **Smallest wedge:** one high school counselor, one class period. Juniors finish Quick match in about two minutes and each prints a one-page plan for their counseling meeting. It needs no accounts, server, student data or district purchase, so a counselor can use it the same day.
+- **Market size:** about 3.9 million students in each U.S. public high school grade (15.6 million in grades 9–12, fall 2023, NCES), each served by a counselor with an average caseload of 376 students (ASCA, 2023–24). Another 15.8 million undergraduates are choosing or changing majors (NCES, fall 2023).
+- **Impact metric:** 33% of bachelor's students change their major within three years (NCES). At $11,610 a year for in-state public tuition and fees (College Board, 2024–25), one extra semester costs a student about $5,800 in tuition alone. OpenPath's job is to move that exploration before enrollment, when it's free.
+- **Demo proof:** a public, working app with 319 careers in 19 families, 97 with role-specific research. In automated browser tests, simulated students reached a top match in 5–14 questions.
+- **Traction to date:** the demo is live and the code is public. No student usage data yet. The first pilot (`PILOT.md`) measures the share of a class that finds at least one career they hadn't heard of.
+- **Why it gets bigger:** each counselor brings a whole class, so adoption spreads school by school without a sales cycle. A paid counselor view (class-level interests for planning workshops) is what districts would buy. The same flow then extends to college career centers and first-year seminars, and to all 1,016 O*NET occupations with an OCI Generative AI advisor.
+
 ## Short description
 
-OpenPath helps students explore careers they may not know to search for yet. In about two minutes, a student picks a few interests, answers short "Would you enjoy this?" questions, and gets a top match plus five other strong matches. Each match comes with a step-by-step path: what to do now in high school, what to study, how to get a first role, how to grow, and how to lead or specialize, with pay at each stage. The app points students to current U.S. occupation, wage, credential and job-search sources so they can verify details before investing time or tuition.
+OpenPath helps students explore careers they may not know to search for yet. In about two minutes, a student picks a few interests, answers short "Would you enjoy this?" questions, and gets a top match plus five other strong matches. Each match comes with a step-by-step path: what to do now in high school, what to study, how to get a first role, how to grow, and how to lead or specialize, with pay at each stage. The app points students to current U.S. occupation, wage, credential and job-search sources so they can verify details before investing time or tuition. The first use is narrow: a high school counselor runs it in one class period, and every student leaves with a printable plan to bring to their counseling meeting.
 
 ## The problem
 
