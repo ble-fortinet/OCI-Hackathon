@@ -2,17 +2,53 @@
 
 ## At a glance
 
-- **See the full workflow in one click:** https://hackathonvanguard.vercel.app/?demo opens a completed result for a sample student: a top match with "why it matched", a five-step path with pay at each stage, five alternatives, an AI explanation, a full career profile and a printable plan. Or press **See an example result** on the home screen.
-- **Smallest wedge:** one high school counselor, one class period. Juniors finish Quick match in about two minutes and each prints a one-page plan for their counseling meeting. It needs no accounts, server, student data or district purchase, so a counselor can use it the same day.
-- **Market size:** about 3.9 million students in each U.S. public high school grade (15.6 million in grades 9–12, fall 2023, NCES), each served by a counselor with an average caseload of 376 students (ASCA, 2023–24). Another 15.8 million undergraduates are choosing or changing majors (NCES, fall 2023).
-- **Impact metric:** 33% of bachelor's students change their major within three years (NCES). At $11,610 a year for in-state public tuition and fees (College Board, 2024–25), one extra semester costs a student about $5,800 in tuition alone. OpenPath's job is to move that exploration before enrollment, when it's free.
-- **Demo proof:** a public, working app with 319 careers in 19 families, 97 with role-specific research. In automated browser tests, simulated students reached a top match in 5–14 questions. Each top match has a live "Explain this match with AI" button that answers in a few seconds.
-- **Traction to date:** the demo is live and the code is public. No student usage data yet. The first pilot (`PILOT.md`) measures the share of a class that finds at least one career they hadn't heard of.
-- **Why it gets bigger:** each counselor brings a whole class, so adoption spreads school by school without a sales cycle. A paid counselor view (class-level interests for planning workshops) is what districts would buy. The same flow then extends to college career centers and first-year seminars, and to all 1,016 O*NET occupations, with the AI advisor running on OCI Generative AI.
+- **Smallest wedge:** one counselor, one class period, every junior leaves with a printed career plan. No accounts, server, student data or district purchase, so a counselor can use it the same day.
+- **See it working in one click:** https://hackathonvanguard.vercel.app/?demo=maya opens a finished result for a sample student, with her top match, five other matches and a step-by-step plan.
+- **Proof point (measured):** the sample student reaches a full five-step plan in 6 answers. In automated browser tests, simulated students reached a top match in 5–14 questions.
+- **Expected KPI (pilot target, not yet measured):** at least 60% of students in a class find at least one career they hadn't heard of and want to look into. How we'll measure it is in `PILOT.md`.
+- **Market:** 15.6 million U.S. public high school students (NCES, fall 2023), served by school counselors averaging 372 students each (ASCA, 2024–25). 353,310 educational, guidance and career counselors and advisors work in the U.S. (BLS, May 2025); they are the people who bring OpenPath into a classroom.
+- **Impact:** 33% of bachelor's students change their major within three years (NCES). One extra semester at a public four-year college costs about $5,800 in tuition alone (College Board, 2024–25). OpenPath moves that exploration to high school, when it's free.
+- **Why it gets bigger:** each counselor brings a whole class, so it spreads school by school without a sales cycle. A paid counselor view (class-level interests for planning workshops) is what districts would buy. Then college career centers, all 1,016 O*NET occupations, and the AI advisor on OCI Generative AI.
 
 ## Short description
 
-OpenPath helps students explore careers they may not know to search for yet. In about two minutes, a student picks a few interests, answers short "Would you enjoy this?" questions, and gets a top match plus five other strong matches. Each match comes with a step-by-step path: what to do now in high school, what to study, how to get a first role, how to grow, and how to lead or specialize, with pay at each stage. The app points students to current U.S. occupation, wage, credential and job-search sources so they can verify details before investing time or tuition. The first use is narrow: a high school counselor runs it in one class period, and every student leaves with a printable plan to bring to their counseling meeting.
+OpenPath helps students explore careers they may not know to search for yet. In about two minutes, a student picks a few interests, answers short "Would you enjoy this?" questions, and gets a top match plus five other strong matches. Each match comes with a step-by-step path: what to do now in high school, what to study, how to get a first role, how to grow, and how to lead or specialize, with pay at each stage. The first use is narrow: a high school counselor runs it in one class period, and every student leaves with a printable plan to bring to their counseling meeting.
+
+## Before and after
+
+| Step | Today | With OpenPath |
+|---|---|---|
+| Finding options | The student names the few jobs they already know and searches for those titles. | The student picks areas and answers 5–14 short scenarios. They get a top match and five others, often titles they hadn't heard of. |
+| Understanding a career | Facts are spread across many sites, written for adults, with no clear first step. | Each match says which answers led to it and shows a five-step path from high school to senior roles, with pay at each stage. |
+| Choosing what to study | Students often pick a major or program first and learn about cost and requirements later. | The path lists majors from the official crosswalk and says to check cost, accreditation and credit transfer before paying. |
+| Counselor meeting | A counselor with about 372 students starts from "What do you want to do?" | The student brings a printed plan with six options. The meeting starts from options, not a blank page. |
+| What happens next | Nothing is written down. | The student keeps a saved list, a side-by-side comparison, a printed or downloaded plan and, optionally, an AI explanation with three things to try this semester. |
+
+## Demo walkthrough: Maya, a high school junior
+
+This is the workflow a judge sees at https://hackathonvanguard.vercel.app/?demo=maya. Every screen is the real app; the example runs the same quiz a student would.
+
+**1. Pick what sounds like you (10 seconds).** Maya picks Technology and Hands-on work. She could pick any number of areas, or none.
+
+![Picking areas](docs/walkthrough/1-pick-areas.png)
+
+**2. Answer "Would you enjoy this?" (about a minute).** One realistic scenario at a time, with Yes, Maybe or Not for me. Each question is chosen to separate the careers still in the running. Back, Skip and Change my picks are always there.
+
+![A quiz question](docs/walkthrough/2-question.png)
+
+**3. See the top match and why (after 6 answers).** Electro-Mechanical Technician, with the three answers that led to it. The plan starts right away: classes and clubs to try now, what to study, the first role with starting pay ($48k–$59k), skills and networking, and lead or specialize options with senior pay.
+
+![Top match with step-by-step path](docs/walkthrough/3-top-match-and-path.png)
+
+**4. Explore five other matches.** Industrial Machinery Mechanic, Robotics Technician, Controls Engineer, Mechatronics Engineer and Robotics Engineer. Each opens its own five-step plan, and each can be saved or compared.
+
+![Another match opened](docs/walkthrough/4-other-match.png)
+
+**5. Ask AI to explain the match (optional, live site).** "Explain this match with AI" writes why the career could fit her answers, three things to try this semester and two questions to ask a counselor. It uses only OpenPath's sourced facts for that career, and every number is checked against them.
+
+**6. Print the plan and bring it to the counselor.** One tap gives a clean one-page plan to print or download, including the AI explanation if she made one.
+
+![Printable plan](docs/walkthrough/5-printable-plan.png)
 
 ## The problem
 
@@ -26,28 +62,47 @@ The first audience is high school and college students exploring majors, electiv
 
 ## The smallest wedge: one counselor, one class period
 
-Before building a platform, OpenPath has to work in one setting: a high school counselor running a career lesson with juniors.
+Before any platform, OpenPath has to work in one setting: a high school counselor running a 45-minute career lesson with juniors.
 
-- **Before:** a counselor responsible for hundreds of students (the U.S. average was 376 students per counselor in 2023–24) gets a few minutes per student. The meeting often starts from "What do you want to do?", and many students can only name a handful of familiar jobs.
-- **During the lesson:** each student completes Quick match in about two minutes on any phone or laptop and prints or downloads a one-page plan.
-- **After:** the student arrives at their counseling meeting with a top match, five alternatives they may not have heard of, a step-by-step path, and a list of things to verify before paying for a program. The meeting starts from options instead of a blank page.
+1. The counselor shares one link. Students open it on any phone or laptop; there is nothing to install and no sign-in.
+2. Each student finishes Quick match in about two minutes and opens their top match and the five others.
+3. Each student prints or downloads a one-page plan.
+4. At their counseling meeting, the student brings the plan, and the conversation starts from six options and a path instead of a blank page.
 
-This wedge needs no accounts, no server and no student data, so a counselor can use it the same day without a district purchase or a privacy review. The same flow works for a college first-year seminar or an advising appointment.
+This delivers value on day one without accounts, a server or student data, so it needs no district purchase or privacy review. Everything after this, such as the counselor view and college career centers, builds on a wedge that already works.
 
 ## Who uses it, who pays, and why they're reachable
 
 - **User:** high school juniors and seniors, and college first- and second-year students who haven't settled on a major.
-- **Champion:** school counselors and college career advisers. They already run career lessons and appointments and need something students can finish in one sitting. They're reachable as a community through professional associations such as the American School Counselor Association and NACE.
+- **Champion:** school counselors and college career advisers. They already run career lessons and appointments and need something students can finish in one sitting. There are 353,310 educational, guidance and career counselors and advisors in the U.S. (BLS, May 2025), and they're reachable as a community through professional associations such as the American School Counselor Association and NACE.
 - **Buyer, later:** school districts and college career-services or advising offices. The tools they buy today, such as Naviance and Xello, are sold as school or district licenses. OpenPath starts free for individual counselors and students, and a paid tier comes only after counselors are using it.
 
 ## Market scope
 
+- **372** students per school counselor on average in 2024–25, against the 250 the American School Counselor Association recommends (ASCA).
+- **353,310** educational, guidance and career counselors and advisors in the U.S. (BLS, May 2025).
 - **15.6 million** students attended U.S. public high schools (grades 9–12) in fall 2023 (NCES), roughly 3.9 million per grade.
 - **15.8 million** undergraduates were enrolled at U.S. degree-granting institutions in fall 2023 (NCES).
 - **33%** of students pursuing a bachelor's degree changed their major at least once within three years (NCES, students who started in 2011–12).
 - **$11,610** was the average yearly in-state tuition and fees at a public four-year college in 2024–25 (College Board). If a late switch adds even one semester, that is roughly $5,800 in tuition alone, before living costs.
 
-OpenPath has no usage data yet. The first metric to collect is the share of students in a pilot class who find at least one career they hadn't heard of and want to look into. The pilot plan is in `PILOT.md`.
+## Proof points and KPIs
+
+**Measured now (automated tests, October 25, 2026):**
+- The sample student in the demo reaches a full five-step plan in 6 answers.
+- Simulated students reached a top match in 5–14 questions.
+- All 319 careers show a five-step path; a plan prints or downloads in one tap.
+
+**Expected KPIs for the first pilot (targets we set, not results):**
+
+| KPI | Target | How it's measured |
+|---|---|---|
+| Students who find at least one career they hadn't heard of and want to look into | 60% or more | Show of hands or an anonymous form (`PILOT.md`) |
+| Students who finish Quick match within the lesson | 90% or more | Count of printed or downloaded plans |
+| Students who can explain why their top match appeared | 70% or more | Pilot question 3 |
+| Counseling meetings where the student brings a plan | Tracked from the first pilot | Counselor tally |
+
+OpenPath has no student usage data yet. We will replace these targets with real counts after the first pilot and report them even if they're small.
 
 ## How it grows after the wedge
 
@@ -56,7 +111,7 @@ OpenPath has no usage data yet. The first metric to collect is the share of stud
 3. **College career centers:** the same flow fits first-year seminars and advising appointments, reaching the 15.8 million undergraduates.
 4. **Deeper data and AI on OCI:** expand from 319 careers to all 1,016 O*NET occupations, and run the AI advisor on OCI Generative AI. The code already supports it and needs only OCI credentials. Then extend it from explaining a match to answering follow-up questions, still citing sourced career information.
 
-## How OpenPath helps
+## Features in detail
 
 **Quick match.** The student picks any of ten interest tiles (fewer gives a sharper match) (people and culture, analysis and problem-solving, creative work, community, operations, science, communication, leadership, environment and technology) and, optionally, any work styles (hands-on work, teamwork, clear structure, fast-changing work, outdoors or fieldwork, independent focus). The app then asks one realistic scenario at a time, such as "Troubleshooting a robot that stopped working" or "Restoring a damaged habitat," with three answers: Yes, Maybe or Not for me. Each question is chosen to best separate the careers still in the running, so most students finish in 6–12 taps. Back, Skip, "Change my picks" and "Show my match now" are always available.
 
@@ -103,6 +158,16 @@ The content is maintained in the repository's `tools` folder: `catalog.py` holds
 
 Matching is transparent rule-based scoring on hand-tagged scenarios. It is not a predictive model, a psychological assessment or a validated measure of who will thrive in a job. Role-specific profiles were researched with AI assistance and their pay figures were checked against Bureau of Labor Statistics pages.
 
+## What's production-ready and what's still hackathon-grade
+
+| Ready for real use | Still hackathon-grade |
+|---|---|
+| The core app: a single file that runs on any phone or laptop, online or offline, with no accounts and no student data stored anywhere but the student's own browser. | The AI explanation runs on OpenAI today. The OCI Generative AI path is written but hasn't been run against a live OCI tenancy. |
+| Reproducible data pipeline: `validate.py` checks every occupation code and quiz tag, and `build.py` rebuilds the published app exactly from official O*NET, BLS and NCES data with attribution. | The AI rate limit is kept in each server instance's memory, so it doesn't hold across instances yet. |
+| AI safeguards: the server looks up career facts itself, ignores answers that aren't real quiz scenarios, checks every number in the answer and rate-limits each visitor. | Career content hasn't been reviewed by counselors or people working in each field. 222 of 319 careers use shared family guidance rather than role-specific research. |
+| Automated browser tests, phone layout, keyboard use, and a print and download plan that works without the network. | Matching hasn't been tested with real students, and there's no screen-reader test yet. |
+| Clear limits on every page: pay is for the broad occupation, credentials are things to verify, matches are a starting point. | Pay is a fixed snapshot (BLS May 2024 and 2025) with no automatic refresh. U.S. only. No counselor view or accounts yet. |
+
 ## Market data and source links
 
 - **Occupation data:** O*NET Database (U.S. Department of Labor, CC BY 4.0). Tasks, related titles and tools come from O*NET 30; skills, education levels, interests and job zones from earlier O*NET releases. Where a newer occupation has no published survey data yet, the app uses the most similar occupation and labels it as an estimate.
@@ -134,6 +199,8 @@ Automated tests in a headless Chromium browser (October 25, 2026):
 - Career library search and family filters, save, compare, About page, state pay picker, and the Astronaut profile's NASA source link.
 - Phone width (390 px) with no horizontal scrolling; no JavaScript errors on any screen.
 - The catalog validator reports no problems, and rebuilding from the repository reproduces the published `index.html` exactly.
+
+- The example link (`?demo=maya`) opens a finished result for the sample student in one step, on desktop and at phone width, with no JavaScript errors; "Start your own match" clears it.
 
 AI explanation, tested on the live site (October 25, 2026):
 
@@ -172,13 +239,7 @@ Everything a student does stays in their browser unless they press "Explain this
 ## Demo URL
 
 - **Live demo:** https://hackathonvanguard.vercel.app
-- **Example walkthrough (no quiz needed):** https://hackathonvanguard.vercel.app/?demo
-  1. The example shows a student who picked Creative work, Communication and Technology and answered 8 questions. Their top match is **UX Writer**, with the yes answers that led to it.
-  2. Press **Explain this match with AI** for a short explanation built only from sourced data, with every number checked.
-  3. Read **Your path, step by step**: high school, what to study, first role and starting pay, mid career, and lead or specialize.
-  4. Open **See full profile** for the typical day, skills, majors, credentials, pay percentiles and pay by state, and links to official sources.
-  5. Press **Print my plan** for the one-page plan a student brings to their counselor. The AI explanation is included.
-  6. Open **Other strong matches** (Conversation Designer, UX/UI Designer and others) and use **+ Compare** to see them side by side.
+- **One-click example result:** https://hackathonvanguard.vercel.app/?demo=maya
 - **Repository:** https://github.com/ble-fortinet/OCI-Hackathon
 - The app also runs offline: download `index.html` and open it in any browser.
 
@@ -197,6 +258,8 @@ Everything a student does stays in their browser unless they press "Explain this
 - NCES undergraduate enrollment (Condition of Education): https://nces.ed.gov/programs/coe/indicator/cha
 - NCES Data Point, beginning college students who change their majors within 3 years: https://nces.ed.gov/pubs2018/2018434/
 - ASCA student-to-school-counselor ratio 2023–24: https://schoolcounselor.org/getmedia/1282baef-9128-44cf-8b4b-63fa5cfda2b6/pr_ratios-23-24.pdf
+- ASCA student-to-school-counselor ratio 2024–25: https://www.schoolcounselor.org/getmedia/62807f33-a020-4c4f-ac6f-bf284803fd97/pr_ratios-24-25.pdf
+- BLS, Educational, Guidance, and Career Counselors and Advisors (May 2025): https://www.bls.gov/oes/current/oes211012.htm
 - College Board, Trends in College Pricing and Student Aid 2024: https://research.collegeboard.org/media/pdf/Trends-in-College-Pricing-and-Student-Aid-2024-ADA.pdf
 - NASA astronaut requirements: https://www.nasa.gov/humans-in-space/astronauts/become-an-astronaut/
 
