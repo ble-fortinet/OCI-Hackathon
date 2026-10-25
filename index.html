@@ -682,7 +682,7 @@ function renderAbout(){
       <li><b>Licensing:</b> requirements vary by state and change. OpenPath lists credentials to look into, not rules. Confirm with your state licensing board or the credential's official site.</li>
       <li><b>Estimates:</b> a few newer occupations have no published survey data yet; their skills or education come from the most similar occupation and say so.</li>
       <li><b>Matching:</b> based on hand-tagged scenarios and simple word matching. It has not been validated as a career assessment.</li></ul></div>
-  <div class="panel"><h2>Privacy</h2><p>OpenPath runs entirely in your browser. Your quiz answers, note, saved careers and compare list are stored only on this device. Nothing is sent to any server. Links to outside sites open those sites in a new tab.</p></div>`;
+  <div class="panel"><h2>Privacy</h2><p>OpenPath runs entirely in your browser. Your quiz answers, note, saved careers and compare list are stored only on this device. Nothing is sent to any server unless you press “Explain this match with AI”. Then only that career's details and the quiz scenarios you answered yes or maybe to are sent to OpenPath's server and Oracle Cloud's AI service to write the explanation. Nothing that identifies you is sent. Links to outside sites open those sites in a new tab.</p></div>`;
 }
 
 /* ---------- detail ---------- */
@@ -1032,6 +1032,7 @@ function renderMatch(){
       <h2>${esc(c.t)}</h2><p class="small" style="margin:0 0 8px"><b>${esc(FAM[c.f].name)}</b> · ${c.rs ? "Role-specific details" : "Shared guidance + official data"}</p>
       <p style="margin:0 0 8px">${esc(c.d)}</p><p class="small">${why(best)}</p>
       <div class="row noprint"><button class="btn sm" data-open="${esc(c.t)}">See full profile</button><button class="ibtn" data-save="${esc(c.t)}" aria-pressed="${saved.has(c.t)}">${saved.has(c.t) ? "★ Saved" : "☆ Save"}</button><button class="btn ghost sm" id="qmPrint">Print my plan</button></div>
+      <div class="noprint hidden" id="aiBox" style="margin-top:12px"><button class="btn ghost sm" id="aiBtn">Explain this match with AI</button><div class="info hidden" id="aiOut" aria-live="polite"></div></div>
       <h3 style="margin-top:20px">Your path, step by step</h3>${planHTML(c)}</div>
     <h2 style="font-size:20px;margin:26px 0 4px">Other strong matches</h2><p class="hint">Tap any one to see its full path.</p>
     ${rest.slice(0, 5).map((r, k) => { const o = CAR[r.i]; return `<details class="other"><summary><div><h3>${k + 2}. ${esc(o.t)}</h3><span class="rk">${esc(FAM[o.f].name)} · ${why(r)}</span></div><span aria-hidden="true">▾</span></summary>
@@ -1048,6 +1049,38 @@ function renderMatch(){
   $("qmPrint").onclick = () => openPlan(c.t);
   $("qmMore").onclick = () => { qm.phase = "ask"; qmForce = qm.order.length + 4; qmSave(); renderMatch(); };
   $("qmRe").onclick = qmRestart; $("qmLib").onclick = () => showView("library");
+  aiSetup(c, best);
+}
+
+/* ---------- optional AI explanation (OCI Generative AI via /api/advisor) ---------- */
+let aiEnabled = null;
+function aiCheck(){
+  if (aiEnabled !== null) return Promise.resolve(aiEnabled);
+  if (location.protocol === "file:") return Promise.resolve(aiEnabled = false);
+  return fetch("/api/advisor").then(r => r.ok ? r.json() : {}).then(j => (aiEnabled = !!j.enabled)).catch(() => (aiEnabled = false));
+}
+function aiFacts(c){
+  const x = c.rs ? c.x : null, o = c.c ? OCC[c.c] : null;
+  return {title: c.t, family: FAM[c.f].name, description: c.d,
+    path: x && x.path ? x.path.map(p => `${p.stage} (${p.years}): ${p.title}. ${p.focus}`) : [],
+    pay: x && x.pay ? `Entry ${x.pay.entry}; mid career ${x.pay.mid}; senior ${x.pay.senior}` : (o && o.w && o.w.p[2] ? `U.S. median for the broad occupation ${o.t}: ${k$(o.w.p[2])} (BLS, ${o.w.y})` : ""),
+    majors: x && x.majors ? x.majors.map(m => m.name) : (o ? o.mj.slice(0, 5) : []),
+    tryIt: (x ? x.getin : []).concat(FAM[c.f].explore || []).slice(0, 5),
+    tasks: o ? o.k.slice(0, 4) : []};
+}
+function aiSetup(c, r){
+  aiCheck().then(on => {
+    const box = $("aiBox"); if (!on || !box) return;
+    box.classList.remove("hidden");
+    $("aiBtn").onclick = () => {
+      const out = $("aiOut"); out.classList.remove("hidden"); out.textContent = "Asking the advisor…"; $("aiBtn").disabled = true;
+      fetch("/api/advisor", {method: "POST", headers: {"Content-Type": "application/json"}, body: JSON.stringify({career: aiFacts(c), yes: r.yes.slice(0, 6), maybe: r.maybe.slice(0, 6)})})
+        .then(res => res.json())
+        .then(j => { out.innerHTML = j.text ? `${esc(j.text).replace(/\n/g, "<br>")}<p class="small" style="margin:8px 0 0">Written by AI (OCI Generative AI on Oracle Cloud) using only OpenPath's sourced data for this career. Check the full profile and official sources before deciding.</p>` : `Couldn't reach the advisor right now. ${esc(j.error || "")}`; })
+        .catch(() => { out.textContent = "Couldn't reach the advisor right now. Try again later."; })
+        .finally(() => { $("aiBtn").disabled = false; });
+    };
+  });
 }
 let qmForce = 0;
 const _qmDone = qmDone;

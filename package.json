@@ -1,0 +1,9 @@
+{
+  "name": "openpath",
+  "private": true,
+  "description": "OpenPath career discovery. The site is a static index.html; api/advisor.js is an optional Vercel function that calls OCI Generative AI.",
+  "dependencies": {
+    "oci-common": "^2.80.0",
+    "oci-generativeaiinference": "^2.80.0"
+  }
+}

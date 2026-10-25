@@ -18,6 +18,20 @@ OpenPath helps students uncover a wide range of career options, including specia
 
 OpenPath is one self-contained file. No account, server or install is needed.
 
+**Optional AI explanation (OCI Generative AI).** When deployed on Vercel with OCI credentials, the results page shows "Explain this match with AI", served by `api/advisor.js`. To turn it on, add these environment variables in the Vercel project (Settings → Environment Variables), then redeploy:
+
+| Variable | Value |
+|---|---|
+| `OCI_TENANCY_OCID` | Your tenancy OCID |
+| `OCI_USER_OCID` | The OCID of a user with access to Generative AI |
+| `OCI_FINGERPRINT` | The fingerprint of that user's API signing key |
+| `OCI_PRIVATE_KEY` | The full PEM private key |
+| `OCI_COMPARTMENT_OCID` | A compartment where the user may use Generative AI |
+| `OCI_REGION` | Optional. A region that offers OCI Generative AI. Default `us-chicago-1` |
+| `OCI_GENAI_MODEL` | Optional. Default `meta.llama-3.3-70b-instruct` |
+
+The user needs an IAM policy such as `allow group <group> to use generative-ai-family in compartment <compartment>`. Without these variables the button stays hidden and the app works as before.
+
 - **Open it directly:** double-click `index.html`, or open it in any modern browser.
 - **Deployment:** every push to `main` on https://github.com/ble-fortinet/OCI-Hackathon deploys automatically to https://hackathonvanguard.vercel.app via Vercel.
 

@@ -37,7 +37,7 @@ This wedge needs no accounts, no server and no student data, so a counselor can 
 - **33%** of students pursuing a bachelor's degree changed their major at least once within three years (NCES, students who started in 2011–12).
 - **$11,610** was the average yearly in-state tuition and fees at a public four-year college in 2024–25 (College Board). If a late switch adds even one semester, that is roughly $5,800 in tuition alone, before living costs.
 
-OpenPath has no usage data yet. The first metric to collect is the share of students in a pilot class who find at least one career they hadn't heard of and want to look into.
+OpenPath has no usage data yet. The first metric to collect is the share of students in a pilot class who find at least one career they hadn't heard of and want to look into. The pilot plan is in `PILOT.md`.
 
 ## How it grows after the wedge
 
@@ -75,6 +75,8 @@ The library is a useful starting set, not every title used by every employer or 
 ## How it was built
 
 OpenPath is a responsive, single-page application built with HTML, CSS and JavaScript. It runs in a browser with no server or account. Saved careers, quiz answers and the compare list use the browser's local storage.
+
+**AI explanation on Oracle Cloud (OCI Generative AI).** On the results page, a student can press "Explain this match with AI". The app sends that career's sourced facts (description, path, pay, majors, low-cost ways to try it) and the scenarios the student said yes or maybe to to a small serverless function (`api/advisor.js`). The function calls the OCI Generative AI chat API (default model: Meta Llama 3.3 70B Instruct, on demand). The model is told to use only the facts provided and to return why the career could fit, three things to try this semester, and two questions to ask a counselor. The button appears only when OCI credentials are configured. Without them, and when the app is opened offline, OpenPath works exactly as before.
 
 The content is maintained in the repository's `tools` folder: `catalog.py` holds the quiz questions, career families and career cards (each card is tagged with the scenarios it fits); `validate.py` checks that every occupation code exists, every tag is a real quiz scenario and every scenario leads to at least two careers; and `build.py` combines the catalog with processed official data in the `data` folder to produce `index.html`. Adding a career is one line in the catalog followed by a rebuild.
 
@@ -120,7 +122,7 @@ OpenPath does not know where a student will thrive. It surfaces careers that sha
 
 Role-specific and family-level content needs review by students, school counselors, workers in each field and subject-matter experts. Credentials are listed as things to look into, not legal requirements; licensing rules vary by state and change. Pay and outlook should be refreshed from the original sources.
 
-Everything a student does stays in their browser. When a student opens an outside link, only the career title is included in that link.
+Everything a student does stays in their browser unless they press "Explain this match with AI". Then only that career's details and the scenario labels they answered yes or maybe to are sent to the AI function and OCI Generative AI. No name, account or free-text note is sent. When a student opens an outside link, only the career title is included in that link.
 
 ## How we would test the next version
 
@@ -137,7 +139,8 @@ Everything a student does stays in their browser. When a student opens an outsid
 - Add a location and constraints step (state, budget, time to train, accessibility needs) so pay and training options reflect where the student lives.
 - Have counselors and practitioners review the role-specific profiles and family guidance.
 - Test Quick match with students and advisers before making stronger claims about fit or outcomes.
-- If an AI assistant is added later, use it to explain sourced role information and suggest questions to ask, not to make a career decision for a student. Keep citations and let students inspect the assumptions.
+- Extend the OCI Generative AI advisor from explaining a match to answering follow-up questions, still grounded only in sourced career data and never making the decision for the student.
+- Run the classroom pilot in `PILOT.md` and report the results here.
 
 ## Demo URL
 
