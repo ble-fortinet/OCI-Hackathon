@@ -16,7 +16,7 @@ The first audience is high-school and college students who are exploring majors,
 
 ## How OpenPath helps
 
-A student can write about what they enjoy, care about, or want more of in a workday. If they are unsure how to begin, they can instead select interests and work preferences such as hands-on work, teamwork, structure, pace, fieldwork, or independent focus. OpenPath uses those choices to order career suggestions and shows the signals that helped a role appear.
+A student can select several interests, then drill into what kind of work within each one sounds appealing. For example, choosing technology opens options such as software, cybersecurity, data, or robotics; each choice then leads to realistic task scenarios. Six work preferences—including hands-on work, teamwork, structure, pace, fieldwork, and independent focus—have the same specific-choice and scenario steps. Students may select multiple answers at every stage, and can optionally add a written note. Guided answers use transparent role and title matches; notes use simpler phrase matching and may miss nuanced wording.
 
 Each career profile offers a starting route from early experience to more advanced work, plus work-environment notes, ways to get first experience, relevant majors and classes to investigate, skills and credentials to check, networking ideas, and longer-term specialization or leadership options. A “before spending on a major or program” checklist asks students to verify prerequisites, cost, accreditation, transfer rules, licensing outcomes, and lower-cost ways to try the field.
 
@@ -24,7 +24,7 @@ Students can save paths and return to them in the same browser. They can also se
 
 ## What is in the current demo
 
-The local demo contains 129 unique career-title cards across people and culture, community, creative work, information technology, software and data, engineering and robotics, healthcare, physician specialties, science and space, sales and business, operations, and environment-related work. Examples include cybersecurity analyst, robotics technician, robotics engineer, registered nurse, cardiologist, radiologist, genetic counselor, astronomer, planetary scientist, astronaut, sales engineer, talent acquisition specialist, people analytics analyst, and supply-chain analyst.
+The local demo contains 228 unique career-title cards across 20 browse categories, including people and culture, community, creative work, technology, healthcare, science and space, education, law and public safety, hospitality and tourism, trades and construction, agriculture and animal care, transportation and aviation, sales, operations, and environmental work. Creative roles span visual art, film and television, animation, design, games, music, writing, digital content, photography, and exhibitions. Examples include cybersecurity analyst, robotics technician, robotics engineer, registered nurse, cardiologist, radiologist, genetic counselor, astronomer, planetary scientist, astronaut, sales engineer, talent acquisition specialist, people analytics analyst, and supply-chain analyst.
 
 The 18 original profiles have more role-specific descriptions and details. The additional titles broaden discovery, but many use shared career-family summaries and pathways. They are not individually researched occupational reports. Students are directed to the linked official occupation profiles for the exact tasks, requirements, and alternate titles. The library is a useful starting set, not every title used by every employer or a complete worldwide job catalog.
 
@@ -48,7 +48,7 @@ OpenPath should be presented as a complementary student-facing guide, not as the
 
 ## Testing completed
 
-A local functional smoke check exercised the app’s JavaScript and browser-page structure. It confirmed that all 129 unique career details can open, story-based and guided choices return roles, exact-title search can find Astronaut while interest filters are active, the astronaut profile shows its NASA-specific requirements link, and the current-job search link includes the entered location. The page’s script parses, the HTML structure balances, role controls have unique IDs, and the data placeholder count is zero.
+A local functional smoke check exercised the app’s JavaScript and browser-page structure. It confirmed that all 228 unique career details can open, story-based and guided choices return roles, exact-title search can find Astronaut while interest filters are active, the astronaut profile shows its NASA-specific requirements link, and the current-job search link includes the entered location. The page’s script parses, the HTML structure balances, role controls have unique IDs, and the data placeholder count is zero.
 
 These checks confirm that core interactions work. They do not measure recommendation accuracy, user satisfaction, employment outcomes, or whether a student made a better education decision. No student study or professional review has been completed yet.
 
