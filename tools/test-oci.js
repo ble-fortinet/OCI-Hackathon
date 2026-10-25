@@ -37,14 +37,8 @@ const call = (method, body) => new Promise(resolve => {
   if (!g.body.enabled) { process.exitCode = 1; return; }
   console.log("2. Asking the AI about a sample match (UX Writer)…");
   const t = Date.now();
-  const r = await call("POST", {
-    career: {title: "UX Writer", family: "Writing and communication",
-      description: "Writes the small words in apps, like buttons, error messages and onboarding screens.",
-      path: ["Start (0–2 yrs): Junior UX Writer. Write and edit app text with guidance."], pay: "Entry $60k–$75k; mid career $85k–$105k; senior $120k–$145k+",
-      majors: ["English", "Human-Computer Interaction", "Cognitive Science"],
-      tryIt: ["Rewrite confusing screens from apps you use and explain why", "Volunteer to improve a nonprofit's website wording", "Join a design or app-building club"]},
-    yes: ["Writing ads or posts that make people act", "Building an app people use every day"], maybe: ["Writing the story and dialogue for a video game"]
-  });
+  const sc = require(path.join(ROOT, "api", "_careers.json"))["UX Writer"].scenarios;
+  const r = await call("POST", {title: "UX Writer", yes: sc.slice(0, 2), maybe: sc.slice(2, 3)});
   console.log(`   HTTP ${r.code} in ${((Date.now() - t) / 1000).toFixed(1)}s\n`);
   if (r.body.text) { console.log(`SUCCESS. Your key works (${r.body.provider}). The advisor said:\n`); console.log(r.body.text); }
   else { console.log("FAILED:", r.body.error, "\nSee the 'advisor error' line above for the status and reason (401 = bad key, 429 = quota/billing, 404 = model not available)."); process.exitCode = 1; }

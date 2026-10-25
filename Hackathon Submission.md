@@ -85,14 +85,20 @@ The library is a useful starting set, not every title used by every employer or 
 
 OpenPath is a responsive, single-page application built with HTML, CSS and JavaScript. It runs in a browser with no server or account. Saved careers, quiz answers and the compare list use the browser's local storage.
 
-**AI explanation (live).** On the results page, a student can press "Explain this match with AI". The app sends that career's sourced facts (description, path, pay, majors, low-cost ways to try it) and the scenarios the student said yes or maybe to to a small serverless function (`api/advisor.js`) on Vercel. The function supports two providers, chosen by environment variables:
+**AI explanation (live).** On the results page, a student can press "Explain this match with AI". The app sends only the career title and the scenarios the student said yes or maybe to to a small serverless function (`api/advisor.js`) on Vercel. The server looks up that career's sourced facts itself (description, path, pay, majors, low-cost ways to try it) from `api/_careers.json`, which `build.py` generates from the same data as the app. It ignores any answer that isn't a real quiz scenario for that career, so the browser can't change the facts the AI sees. The function supports two providers, chosen by environment variables:
 
 - **OpenAI** (live in the demo today): the Chat Completions API with a model set by `OPENAI_MODEL`.
 - **OCI Generative AI**: the OCI chat API (default model Meta Llama 3.3 70B Instruct, on demand) through the OCI SDK, used when OCI credentials are set instead. This path is implemented but hasn't been run against a live OCI tenancy yet.
 
-The model is told to use only the facts provided and to return why the career could fit, three things to try this semester, and two questions to ask a counselor. The answer says which provider wrote it. The button appears only when a provider is configured. Without one, and when the app is opened offline, OpenPath works exactly as before. A local test (`tools/test-oci.js`, keys in a git-ignored `.env.local`) checks a key before it is deployed.
+The model is told to use only the facts provided and to return why the career could fit, three things to try this semester, and two questions to ask a counselor.
 
-The content is maintained in the repository's `tools` folder: `catalog.py` holds the quiz questions, career families and career cards (each card is tagged with the scenarios it fits); `validate.py` checks that every occupation code exists, every tag is a real quiz scenario and every scenario leads to at least two careers; and `build.py` combines the catalog with processed official data in the `data` folder to produce `index.html`. Adding a career is one line in the catalog followed by a rebuild.
+- **Number check:** every number in the answer, such as pay or years, must match a number in that career's facts. "$60k" and "$60,000" count as the same. If one doesn't match, the server asks the model once to rewrite without it, then drops any sentence that still has an unverified number.
+- **Rate limit:** each visitor gets 10 explanations per 10 minutes, and each server instance allows 300 per hour, to protect against abuse and runaway cost. Both limits are adjustable with environment variables.
+- **In the printed plan:** once a student has generated an explanation, it appears in their printed or downloaded plan, labeled as an AI explanation.
+
+The answer says which provider wrote it. The button appears only when a provider is configured. Without one, and when the app is opened offline, OpenPath works exactly as before. A local test (`tools/test-oci.js`, keys in a git-ignored `.env.local`) checks a key before it is deployed.
+
+The content is maintained in the repository's `tools` folder: `catalog.py` holds the quiz questions, career families and career cards (each card is tagged with the scenarios it fits); `validate.py` checks that every occupation code exists, every tag is a real quiz scenario and every scenario leads to at least two careers; and `build.py` combines the catalog with processed official data in the `data` folder to produce `index.html` and the AI advisor's fact file, `api/_careers.json`. Adding a career is one line in the catalog followed by a rebuild.
 
 Matching is transparent rule-based scoring on hand-tagged scenarios. It is not a predictive model, a psychological assessment or a validated measure of who will thrive in a job. Role-specific profiles were researched with AI assistance and their pay figures were checked against Bureau of Labor Statistics pages.
 
@@ -141,7 +147,7 @@ OpenPath does not know where a student will thrive. It surfaces careers that sha
 
 Role-specific and family-level content needs review by students, school counselors, workers in each field and subject-matter experts. Credentials are listed as things to look into, not legal requirements; licensing rules vary by state and change. Pay and outlook should be refreshed from the original sources.
 
-Everything a student does stays in their browser unless they press "Explain this match with AI". Then only that career's details and the scenario labels they answered yes or maybe to are sent to the AI function and its AI provider (OpenAI in the current demo). No name, account or free-text note is sent. When a student opens an outside link, only the career title is included in that link.
+Everything a student does stays in their browser unless they press "Explain this match with AI". Then only that career's title and the scenario labels they answered yes or maybe to are sent to the AI function and its AI provider (OpenAI in the current demo). No name, account or free-text note is sent. When a student opens an outside link, only the career title is included in that link.
 
 ## How we would test the next version
 
@@ -158,7 +164,7 @@ Everything a student does stays in their browser unless they press "Explain this
 - Add a location and constraints step (state, budget, time to train, accessibility needs) so pay and training options reflect where the student lives.
 - Have counselors and practitioners review the role-specific profiles and family guidance.
 - Test Quick match with students and advisers before making stronger claims about fit or outcomes.
-- Move the AI advisor to OCI Generative AI by adding OCI credentials (no code change needed), and add a per-visitor rate limit to the AI endpoint.
+- Move the AI advisor to OCI Generative AI by adding OCI credentials (no code change needed), and move the rate limit to a shared store so it holds across server instances.
 - Extend the advisor from explaining a match to answering follow-up questions, still grounded only in sourced career data and never making the decision for the student.
 - Run the classroom pilot in `PILOT.md` and report the results here.
 
