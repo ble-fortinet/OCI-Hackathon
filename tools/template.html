@@ -902,6 +902,8 @@ function openPlan(title){
 /* ---------- quick match: few questions, adaptive ---------- */
 const QM_KEY = "openpath.quickmatch";
 let qm = load(QM_KEY, null) || {phase: "start", interests: [], styles: [], answers: {}, order: []};
+// The example result is never kept: on the next visit, bring back the student's own progress (or a fresh start).
+if (qm.demo) qm = load(QM_KEY + "-own", null) || {phase: "start", interests: [], styles: [], answers: {}, order: []};
 const qmSave = () => store(QM_KEY, qm);
 const SC_LABEL = {}; Object.keys(NODE).forEach(id => { if (NODE[id].type === "sc") SC_LABEL[id] = NODE[id].label; });
 function qmPool(){
@@ -1094,6 +1096,7 @@ qmDone = function(){ if (qmForce && qm.order.length < qmForce) return false; qmF
 /* Example result: a sample student answers the real quiz, so judges and counselors can see a finished result in one click (?demo=maya). */
 function qmRunDemo(){
   const YES = /robot|repair|fix|troubleshoot|machine|circuit|wiring|build|assembl|drone|engine|motor|install|prototype|equipment/i;
+  if (!qm.demo) store(QM_KEY + "-own", qm);
   qm = {phase: "ask", interests: ["technology"], styles: ["hands"], answers: {}, order: [], demo: true};
   for (let k = 0; k < 30 && !qmDone(); k++) {
     const {next} = qmNext(); if (!next) break;

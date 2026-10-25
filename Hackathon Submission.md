@@ -2,13 +2,15 @@
 
 ## At a glance
 
-- **Smallest wedge:** one counselor, one class period, every junior leaves with a printed career plan. No accounts, server, student data or district purchase, so a counselor can use it the same day.
-- **See it working in one click:** https://hackathonvanguard.vercel.app/?demo=maya opens a finished result for a sample student, with her top match, five other matches and a step-by-step plan.
-- **Proof point (measured):** the sample student reaches a full five-step plan in 6 answers. In automated browser tests, simulated students reached a top match in 5–14 questions.
-- **Expected KPI (pilot target, not yet measured):** at least 60% of students in a class find at least one career they hadn't heard of and want to look into. How we'll measure it is in `PILOT.md`.
+- **The wedge (version 1):** one school counselor, one 45-minute class period. Every junior finishes Quick match in about two minutes and leaves with a printed career plan for their counseling meeting. No accounts, server, student data or district purchase, so a counselor can run it the same day. Nothing else has to be built for this to deliver value.
+- **Headline KPI:** the share of students in a class who find at least one career they hadn't heard of and want to look into. **Pilot target: 60% or more.** Not yet measured; how we'll measure it is in `PILOT.md`.
+- **Proof it works today (measured):** the sample student reaches a full five-step plan in 6 answers. See it in one click: https://hackathonvanguard.vercel.app/?demo=maya
+
+**Beyond the wedge**
+
 - **Market:** 15.6 million U.S. public high school students (NCES, fall 2023), served by school counselors averaging 372 students each (ASCA, 2024–25). 353,310 educational, guidance and career counselors and advisors work in the U.S. (BLS, May 2025); they are the people who bring OpenPath into a classroom.
 - **Impact:** 33% of bachelor's students change their major within three years (NCES). One extra semester at a public four-year college costs about $5,800 in tuition alone (College Board, 2024–25). OpenPath moves that exploration to high school, when it's free.
-- **Why it gets bigger:** each counselor brings a whole class, so it spreads school by school without a sales cycle. A paid counselor view (class-level interests for planning workshops) is what districts would buy. Then college career centers, all 1,016 O*NET occupations, and the AI advisor on OCI Generative AI.
+- **Why it gets bigger:** each counselor brings a whole class, so it spreads school by school without a sales cycle. A paid counselor view is what districts would buy. Then college career centers, all 1,016 O*NET occupations, and the AI advisor on OCI Generative AI.
 
 ## Short description
 
@@ -69,7 +71,17 @@ Before any platform, OpenPath has to work in one setting: a high school counselo
 3. Each student prints or downloads a one-page plan.
 4. At their counseling meeting, the student brings the plan, and the conversation starts from six options and a path instead of a blank page.
 
-This delivers value on day one without accounts, a server or student data, so it needs no district purchase or privacy review. Everything after this, such as the counselor view and college career centers, builds on a wedge that already works.
+**Version 1 is already built and deployed. The platform comes later, and only if version 1 works.**
+
+| | Version 1: the wedge (live now) | Later: the platform (not built) |
+|---|---|---|
+| Who | One counselor and one class | Schools, districts, college career centers |
+| What the student gets | Top match, five alternatives, a five-step plan, a printed or downloaded plan, an optional AI explanation | Follow-up questions to an AI advisor, state-specific pay and training, more careers |
+| What the counselor gets | A student who arrives with options and a plan | A class summary of interests to plan workshops and speakers (the paid tier) |
+| Accounts and data | None. Everything stays in the student's browser | Counselor accounts and anonymous class summaries, after a privacy review |
+| Cost to start | Free, same day | A school or district license |
+
+**When we expand:** only after a pilot class meets the headline KPI (60% or more of students find a career they hadn't heard of and want to look into) and the counselor says the plans made meetings easier. If it doesn't, we change the quiz and the content first, not the platform.
 
 ## Who uses it, who pays, and why they're reachable
 
