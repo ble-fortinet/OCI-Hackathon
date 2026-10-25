@@ -54,7 +54,7 @@ module.exports = async (req, res) => {
     const text = (msg.content || []).map(p => p.text || "").join("").trim();
     return res.status(200).json({text: text || "The advisor didn't return an answer. Try again."});
   } catch (e) {
-    console.error("advisor error:", e && (e.message || e));
+    console.error("advisor error:", e && e.statusCode, e && e.serviceCode, e && (e.message || e));
     return res.status(502).json({error: "The AI service didn't respond."});
   }
 };
