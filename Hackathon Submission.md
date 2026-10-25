@@ -16,7 +16,7 @@ The first audience is high school and college students exploring majors, electiv
 
 ## How OpenPath helps
 
-**Quick match.** The student picks up to three interests from ten icon tiles (people and culture, analysis and problem-solving, creative work, community, operations, science, communication, leadership, environment and technology) and, optionally, up to two work styles (hands-on work, teamwork, clear structure, fast-changing work, outdoors or fieldwork, independent focus). The app then asks one realistic scenario at a time, such as "Troubleshooting a robot that stopped working" or "Restoring a damaged habitat," with three answers: Yes, Maybe or Not for me. Each question is chosen to best separate the careers still in the running, so most students finish in 6–12 taps. Back, Skip, "Change my picks" and "Show my match now" are always available.
+**Quick match.** The student picks any of ten interest tiles (fewer gives a sharper match) (people and culture, analysis and problem-solving, creative work, community, operations, science, communication, leadership, environment and technology) and, optionally, any work styles (hands-on work, teamwork, clear structure, fast-changing work, outdoors or fieldwork, independent focus). The app then asks one realistic scenario at a time, such as "Troubleshooting a robot that stopped working" or "Restoring a damaged habitat," with three answers: Yes, Maybe or Not for me. Each question is chosen to best separate the careers still in the running, so most students finish in 6–12 taps. Back, Skip, "Change my picks" and "Show my match now" are always available.
 
 **Transparent results.** The student sees a top match, then five other strong matches. Every match says which "yes" answers connected it. Scoring is simple and documented: +3 for each "yes" scenario a career fits, +1 for "maybe", −3 for "not for me", plus small points for chosen interests and work styles. The top match is described as the best fit for the student's answers, a starting point to explore, not a prediction.
 
@@ -68,9 +68,12 @@ OpenPath is a complementary, student-facing guide, not the first career quiz or 
 Automated tests in a headless Chromium browser (October 25, 2026):
 
 - **Quick match with simulated students** who answered "yes" only to scenarios fitting one interest:
-  - Robotics: 11 questions → Controls Engineer, then Mechatronics Engineer, Drone Pilot, Robotics Engineer and Astronaut.
-  - Animals: 8 questions → Zoologist, then Animal Enrichment Specialist, Animal Trainer and Veterinary Technician.
-  - People and leadership: 11 questions → Executive Coach, then Organizational Development Consultant and Academic Advisor.
+  - Robotics, one area picked: 9 questions → Controls Engineer, then Drone Pilot, Industrial Machinery Mechanic and Robotics Engineer.
+  - Robotics, all 10 areas picked: 12 questions → Robotics Engineer, then Drone Pilot, Automation Engineer and Controls Engineer.
+  - Animals, six areas and three work styles picked: 8 questions → Veterinarian, then Veterinary Technician, Animal Enrichment Specialist and Wildlife Rehabilitator.
+  - People and leadership: 5 questions → Employee Engagement Specialist, then Inclusion Program Specialist and Human Resources Manager.
+  - Film, no areas picked: 14 questions → Film and Video Editor, then Colorist, Foley Artist and Narrative Designer.
+  - A student who says "not for me" to everything sees "No clear match yet" after 20 questions, with options to keep going or browse.
 - Back, Skip, Change my picks, the five-step path for the top match and other matches, opening a full profile and returning to results.
 - Print my plan opens a clean plan view; Print calls the browser's print, and Download produces a standalone plan page.
 - Career library search and family filters, save, compare, About page, state pay picker, and the Astronaut profile's NASA source link.

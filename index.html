@@ -929,11 +929,32 @@ function qmNext(){
   const cont = sc.filter(x => x.s >= top - 3 && x.s > 0).map(x => x.i);
   const pool = qmPool().filter(id => !(id in qm.answers));
   const base = cont.length >= 2 ? cont : sc.slice(0, 40).map(x => x.i);
-  let best = null, bestScore = -1;
+  // Until something sounds good, rotate through the picked areas, trying a different kind of work each round,
+  // so every area is probed early even when many are picked.
+  const anyLiked = qm.order.some(id => qm.answers[id] > 0);
+  if (!anyLiked) {
+    const areas = qm.interests.length ? qm.interests : OP.interests.map(i => i.id);
+    const probed = new Set(qm.order.map(id => NODE[id].parent));
+    for (let r = 0; r < areas.length; r++) {
+      const area = areas[(qm.order.length + r) % areas.length];
+      const kind = NODE[area].kinds.find(k => !probed.has(k));
+      if (!kind) continue;
+      const opts = NODE[kind].sc.filter(id => !(id in qm.answers));
+      if (!opts.length) continue;
+      const pick = opts.map(id => ({id, n: base.filter(i => tagSet[i].has(id)).length})).sort((x, y) => y.n - x.n)[0];
+      return {next: pick.id, sc, cont};
+    }
+  }
+  // follow up on what the student liked: favor scenarios from the same kind of work or area
+  const likedIds = qm.order.filter(id => qm.answers[id] > 0);
+  const likedKinds = new Set(likedIds.map(id => NODE[id].parent)), likedTops = new Set(likedIds.map(id => NODE[NODE[id].parent].parent));
+  let best = null, bestScore = -9;
   pool.forEach(id => {
     const n = base.filter(i => tagSet[i].has(id)).length;
     if (!n) return;
-    const p = n / base.length, val = 1 - Math.abs(p - 0.5) * 2 + (n === base.length ? -0.5 : 0);
+    const p = n / base.length;
+    let val = 1 - Math.abs(p - 0.5) * 2 + (n === base.length ? -0.5 : 0);
+    if (likedKinds.has(NODE[id].parent)) val += 0.8; else if (likedTops.has(NODE[NODE[id].parent].parent)) val += 0.4;
     if (val > bestScore) { bestScore = val; best = id; }
   });
   if (!best) best = Object.keys(SC_LABEL).filter(id => !(id in qm.answers)).find(id => base.some(i => tagSet[i].has(id))) || null;
@@ -941,6 +962,8 @@ function qmNext(){
 }
 var qmDone = function(){
   const n = qm.order.length; if (n < 4) return false;
+  const liked = qm.order.filter(id => qm.answers[id] > 0).length;
+  if (liked < 2) return n >= 20;   // keep asking until at least two things sound good (up to 20 questions)
   const {sc, next} = qmNext(); if (!next) return true;
   const gap = sc[0].s - (sc[1] ? sc[1].s : 0);
   const contenders = sc.filter(x => x.s >= sc[0].s - 1 && x.s > 0).length;
@@ -950,9 +973,9 @@ function renderMatch(){
   const el = $("qmBody");
   if (qm.phase === "start") {
     el.innerHTML = `<div class="hero" style="text-align:center"><h1 id="qmTitle">Find your top career match</h1>
-        <p style="margin:0 auto">Pick up to 3 things that sound like you, then answer a few quick questions. Most people finish in under 2 minutes.</p></div>
+        <p style="margin:0 auto">Pick the areas that sound like you, then answer a few quick questions. Most people finish in under 2 minutes.</p></div>
       <div class="qcard">
-        <div class="qsec"><h3>1. What sounds like you?</h3><p>Pick up to 3 areas that interest you.</p><div class="tiles" id="qmInt" role="group" aria-label="Interests"></div></div>
+        <div class="qsec"><h3>1. What sounds like you?</h3><p>Pick as many as you like. Choosing fewer gives a sharper match.</p><div class="tiles" id="qmInt" role="group" aria-label="Interests"></div></div>
         <div class="qsec"><h3>2. How do you like to work?</h3><p>These preferences help refine your paths. This question is optional.</p><div class="tiles" id="qmSty" role="group" aria-label="Work styles"></div></div>
         <div style="margin-top:24px"><button class="btn" id="qmGo">Start the questions →</button></div>
         <p class="small" id="qmHint" style="margin-top:10px" aria-live="polite">Not sure? Just press start.</p></div>
@@ -961,10 +984,12 @@ function renderMatch(){
     OP.styles.forEach(i => $("qmSty").appendChild(tileBtn(i.id, i.label, qm.styles.includes(i.id))));
     const wire = (box, key, max) => $(box).querySelectorAll(".tile").forEach(b => b.onclick = () => {
       const id = b.dataset.id, arr = qm[key];
-      if (arr.includes(id)) arr.splice(arr.indexOf(id), 1); else { if (arr.length >= max) { $("qmHint").textContent = `You can pick up to ${max}. Unselect one first.`; return; } arr.push(id); }
+      if (arr.includes(id)) arr.splice(arr.indexOf(id), 1); else arr.push(id);
       b.setAttribute("aria-pressed", arr.includes(id)); qmSave();
+      const n = qm.interests.length;
+      $("qmHint").textContent = n === 0 ? "Not sure? Just press start." : n <= 3 ? `${n} area${n > 1 ? "s" : ""} picked.` : `${n} areas picked. That's fine; you may get a few more questions before your match.`;
     });
-    wire("qmInt", "interests", 3); wire("qmSty", "styles", 2);
+    wire("qmInt", "interests"); wire("qmSty", "styles");
     $("qmGo").onclick = () => { qm.phase = "ask"; qmSave(); renderMatch(); };
     $("toDetailed") && ($("toDetailed").onclick = () => showView("quiz"));
     return;

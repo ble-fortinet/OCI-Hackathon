@@ -26,11 +26,11 @@ Interests and work styles are shown as icon tiles (version 3); each question car
 
 For students who want a fast answer, Quick match narrows to one top match in a few taps:
 
-1. **Pick up to 3 things that sound like you** from the 10 interests, and optionally up to 2 work styles.
+1. **Pick the interests that sound like you** from the 10 icon tiles (as many as you like; fewer gives a sharper match), and optionally any work styles.
 2. **Answer short "Would you enjoy this?" questions** with Yes, Maybe or Not for me, one at a time. Each question is a realistic scenario chosen to best split the careers still in the running, so most students finish in 6–12 taps. Back, Skip, "Change my picks" and "Show my match now" are always available.
 3. **See your top match first**, with a full step-by-step path, then **5 other strong matches**. Tap any of them to open its own path.
 
-**Scoring.** Each career gets +3 for every scenario answered "Yes" that it fits, +1 for "Maybe" and −3 for "Not for me". It also gets +1 for each chosen interest and +0.5 for each chosen work style it connects to. Careers with role-specific research get a tiny tie-breaker. Questions stop when there's a clear leader (at least 5 answers and a 3-point lead, or a single contender), after 8 answers with any lead, or at 12 answers. Students can always answer 4 more to sharpen the result.
+**Scoring.** Each career gets +3 for every scenario answered "Yes" that it fits, +1 for "Maybe" and −3 for "Not for me". It also gets +1 for each chosen interest and +0.5 for each chosen work style it connects to. Careers with role-specific research get a tiny tie-breaker. Until the student says yes to something, the first questions rotate through the picked areas (all 10 if none are picked), trying a different kind of work each round, so every area is probed early. After a "yes", the next questions favor the same kind of work and area. A top match is shown only after at least two "yes" or "maybe" answers (or after 20 questions); then questions stop when there's a clear leader (at least 5 answers and a 3-point lead, or a single contender), after 8 answers with any lead, or at 12 answers. Students can always answer 4 more to sharpen the result.
 
 **The step-by-step path** appears for every match and at the top of every career page:
 1. **Now, in high school:** classes, student organizations and low-cost ways to try it.
