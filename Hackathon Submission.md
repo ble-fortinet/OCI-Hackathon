@@ -5,9 +5,9 @@
 - **Smallest wedge:** one high school counselor, one class period. Juniors finish Quick match in about two minutes and each prints a one-page plan for their counseling meeting. It needs no accounts, server, student data or district purchase, so a counselor can use it the same day.
 - **Market size:** about 3.9 million students in each U.S. public high school grade (15.6 million in grades 9–12, fall 2023, NCES), each served by a counselor with an average caseload of 376 students (ASCA, 2023–24). Another 15.8 million undergraduates are choosing or changing majors (NCES, fall 2023).
 - **Impact metric:** 33% of bachelor's students change their major within three years (NCES). At $11,610 a year for in-state public tuition and fees (College Board, 2024–25), one extra semester costs a student about $5,800 in tuition alone. OpenPath's job is to move that exploration before enrollment, when it's free.
-- **Demo proof:** a public, working app with 319 careers in 19 families, 97 with role-specific research. In automated browser tests, simulated students reached a top match in 5–14 questions.
+- **Demo proof:** a public, working app with 319 careers in 19 families, 97 with role-specific research. In automated browser tests, simulated students reached a top match in 5–14 questions. Each top match has a live "Explain this match with AI" button that answers in a few seconds.
 - **Traction to date:** the demo is live and the code is public. No student usage data yet. The first pilot (`PILOT.md`) measures the share of a class that finds at least one career they hadn't heard of.
-- **Why it gets bigger:** each counselor brings a whole class, so adoption spreads school by school without a sales cycle. A paid counselor view (class-level interests for planning workshops) is what districts would buy. The same flow then extends to college career centers and first-year seminars, and to all 1,016 O*NET occupations with an OCI Generative AI advisor.
+- **Why it gets bigger:** each counselor brings a whole class, so adoption spreads school by school without a sales cycle. A paid counselor view (class-level interests for planning workshops) is what districts would buy. The same flow then extends to college career centers and first-year seminars, and to all 1,016 O*NET occupations, with the AI advisor running on OCI Generative AI.
 
 ## Short description
 
@@ -53,7 +53,7 @@ OpenPath has no usage data yet. The first metric to collect is the share of stud
 1. **One class, then a school:** counselors share the link, and every student who finishes walks away with a printable plan. Distribution follows the counselor, not a sales cycle.
 2. **Counselor view:** an optional class summary, such as which career families a class is interested in, helps a counselor plan workshops and speakers. This is the first feature a school or district would pay for.
 3. **College career centers:** the same flow fits first-year seminars and advising appointments, reaching the 15.8 million undergraduates.
-4. **Deeper data and AI on OCI:** expand from 319 careers to all 1,016 O*NET occupations, and add an OCI Generative AI advisor that explains sourced career information in plain language and cites its sources.
+4. **Deeper data and AI on OCI:** expand from 319 careers to all 1,016 O*NET occupations, and run the AI advisor on OCI Generative AI. The code already supports it and needs only OCI credentials. Then extend it from explaining a match to answering follow-up questions, still citing sourced career information.
 
 ## How OpenPath helps
 
@@ -85,7 +85,12 @@ The library is a useful starting set, not every title used by every employer or 
 
 OpenPath is a responsive, single-page application built with HTML, CSS and JavaScript. It runs in a browser with no server or account. Saved careers, quiz answers and the compare list use the browser's local storage.
 
-**AI explanation on Oracle Cloud (OCI Generative AI).** On the results page, a student can press "Explain this match with AI". The app sends that career's sourced facts (description, path, pay, majors, low-cost ways to try it) and the scenarios the student said yes or maybe to to a small serverless function (`api/advisor.js`). The function calls the OCI Generative AI chat API (default model: Meta Llama 3.3 70B Instruct, on demand). The model is told to use only the facts provided and to return why the career could fit, three things to try this semester, and two questions to ask a counselor. The button appears only when OCI credentials are configured. Without them, and when the app is opened offline, OpenPath works exactly as before.
+**AI explanation (live).** On the results page, a student can press "Explain this match with AI". The app sends that career's sourced facts (description, path, pay, majors, low-cost ways to try it) and the scenarios the student said yes or maybe to to a small serverless function (`api/advisor.js`) on Vercel. The function supports two providers, chosen by environment variables:
+
+- **OpenAI** (live in the demo today): the Chat Completions API with a model set by `OPENAI_MODEL`.
+- **OCI Generative AI**: the OCI chat API (default model Meta Llama 3.3 70B Instruct, on demand) through the OCI SDK, used when OCI credentials are set instead. This path is implemented but hasn't been run against a live OCI tenancy yet.
+
+The model is told to use only the facts provided and to return why the career could fit, three things to try this semester, and two questions to ask a counselor. The answer says which provider wrote it. The button appears only when a provider is configured. Without one, and when the app is opened offline, OpenPath works exactly as before. A local test (`tools/test-oci.js`, keys in a git-ignored `.env.local`) checks a key before it is deployed.
 
 The content is maintained in the repository's `tools` folder: `catalog.py` holds the quiz questions, career families and career cards (each card is tagged with the scenarios it fits); `validate.py` checks that every occupation code exists, every tag is a real quiz scenario and every scenario leads to at least two careers; and `build.py` combines the catalog with processed official data in the `data` folder to produce `index.html`. Adding a career is one line in the catalog followed by a rebuild.
 
@@ -123,6 +128,11 @@ Automated tests in a headless Chromium browser (October 25, 2026):
 - Phone width (390 px) with no horizontal scrolling; no JavaScript errors on any screen.
 - The catalog validator reports no problems, and rebuilding from the repository reproduces the published `index.html` exactly.
 
+AI explanation, tested on the live site (October 25, 2026):
+
+- The endpoint reports that it's enabled with OpenAI, and a direct request returned an explanation in about 9 seconds.
+- In a real Chrome browser, a student who picked Technology and answered yes to everything reached Electro-Mechanical Technician after 9 questions. Pressing "Explain this match with AI" returned an explanation built only from that career's data, with three low-cost steps and two questions to ask, labeled with its provider.
+
 These checks confirm that core interactions work. They do not measure recommendation quality, user satisfaction, employment outcomes or whether a student made a better education decision. No student study, screen-reader test or professional content review has been completed yet.
 
 ## Accuracy, privacy and limits
@@ -131,7 +141,7 @@ OpenPath does not know where a student will thrive. It surfaces careers that sha
 
 Role-specific and family-level content needs review by students, school counselors, workers in each field and subject-matter experts. Credentials are listed as things to look into, not legal requirements; licensing rules vary by state and change. Pay and outlook should be refreshed from the original sources.
 
-Everything a student does stays in their browser unless they press "Explain this match with AI". Then only that career's details and the scenario labels they answered yes or maybe to are sent to the AI function and OCI Generative AI. No name, account or free-text note is sent. When a student opens an outside link, only the career title is included in that link.
+Everything a student does stays in their browser unless they press "Explain this match with AI". Then only that career's details and the scenario labels they answered yes or maybe to are sent to the AI function and its AI provider (OpenAI in the current demo). No name, account or free-text note is sent. When a student opens an outside link, only the career title is included in that link.
 
 ## How we would test the next version
 
@@ -148,7 +158,8 @@ Everything a student does stays in their browser unless they press "Explain this
 - Add a location and constraints step (state, budget, time to train, accessibility needs) so pay and training options reflect where the student lives.
 - Have counselors and practitioners review the role-specific profiles and family guidance.
 - Test Quick match with students and advisers before making stronger claims about fit or outcomes.
-- Extend the OCI Generative AI advisor from explaining a match to answering follow-up questions, still grounded only in sourced career data and never making the decision for the student.
+- Move the AI advisor to OCI Generative AI by adding OCI credentials (no code change needed), and add a per-visitor rate limit to the AI endpoint.
+- Extend the advisor from explaining a match to answering follow-up questions, still grounded only in sourced career data and never making the decision for the student.
 - Run the classroom pilot in `PILOT.md` and report the results here.
 
 ## Demo URL
