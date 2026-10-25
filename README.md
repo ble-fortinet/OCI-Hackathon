@@ -4,7 +4,9 @@
 
 OpenPath helps students uncover a wide range of career options, including specialized and less familiar job titles, before they spend money or time on a major, classes or training. It is a practical exploration tool: it suggests paths to look into and points to current sources to verify them. It does not predict where anyone will thrive, and it is not a complete catalog of every job.
 
-**Live demo:** https://rtrtssn4cn-hue.github.io/OCI-hackathon/ (once GitHub Pages is turned on for this repository)
+**Live demo:** https://hackathonvanguard.vercel.app
+
+**Repository:** https://github.com/ble-fortinet/OCI-Hackathon
 
 ## Who it's for
 
@@ -17,7 +19,7 @@ OpenPath helps students uncover a wide range of career options, including specia
 OpenPath is one self-contained file. No account, server or install is needed.
 
 - **Open it directly:** double-click `index.html`, or open it in any modern browser.
-- **Publish it on GitHub Pages:** in this repository, go to **Settings → Pages**, choose **Deploy from a branch**, branch `main`, folder `/ (root)`, and save. After a minute or two it's live at https://rtrtssn4cn-hue.github.io/OCI-hackathon/. Free GitHub accounts need a public repository for Pages.
+- **Deployment:** every push to `main` on https://github.com/ble-fortinet/OCI-Hackathon deploys automatically to https://hackathonvanguard.vercel.app via Vercel.
 
 ## Quick match (the default)
 

@@ -101,7 +101,6 @@ Everything a student does stays in their browser. When a student opens an outsid
 
 ## Next steps
 
-- Turn on GitHub Pages and share the public demo URL.
 - Refresh all occupation data to the current O*NET release (31.0) and the newest BLS estimates.
 - Add a location and constraints step (state, budget, time to train, accessibility needs) so pay and training options reflect where the student lives.
 - Have counselors and practitioners review the role-specific profiles and family guidance.
@@ -110,8 +109,8 @@ Everything a student does stays in their browser. When a student opens an outsid
 
 ## Demo URL
 
-- **Live demo:** https://rtrtssn4cn-hue.github.io/OCI-hackathon/ (available once GitHub Pages is turned on: Settings → Pages → Deploy from a branch → `main`, `/ (root)`)
-- **Repository:** https://github.com/rtrtssn4cn-hue/OCI-hackathon
+- **Live demo:** https://hackathonvanguard.vercel.app
+- **Repository:** https://github.com/ble-fortinet/OCI-Hackathon
 - The app also runs offline: download `index.html` and open it in any browser.
 
 ## Sources
